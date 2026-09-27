@@ -103,4 +103,4 @@ Deleting the key from a file is **not enough** if it was already pushed, because
 | A notebook item says cells were not run | Run all cells top to bottom, then save the notebook and check again |
 | `git push` asks for a login | Sign in with your GitHub account (a browser window usually opens) |
 | The instructor says they cannot see your repo | The invitation has not been sent or accepted. Check Settings, Collaborators |
-| The checker has no checklist for a day | New days get new checklists. Copy `checks/dayNN.json` (and the latest `check_submission.py`) from the `student_template/` folder of the course repo into your own repo, then run the checker again |
+| The checker has no checklist for a day | New days get new checklists. Open [forge90-student-template](https://github.com/neeravpatel10/forge90-student-template), copy the new `checks/dayNN.json` (and the latest `check_submission.py`, if it changed) into your own repo, then run the checker again |
