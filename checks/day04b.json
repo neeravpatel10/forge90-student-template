@@ -1,0 +1,89 @@
+{
+  "day": "day04b",
+  "pass_mark": 80,
+  "title": "Day 04b: Hands-on lab, the ticket-triage assistant",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "day04b_notebook.ipynb exists",
+      "points": 5,
+      "path": "day04b_notebook.ipynb"
+    },
+    {
+      "type": "notebook_valid",
+      "label": "It is a real notebook with all its cells",
+      "points": 5,
+      "path": "day04b_notebook.ipynb",
+      "cells": 15
+    },
+    {
+      "type": "notebook_executed",
+      "label": "You ran the cells and saved the notebook with its outputs",
+      "points": 15,
+      "path": "day04b_notebook.ipynb",
+      "min_fraction": 0.9
+    },
+    {
+      "type": "notebook_no_errors",
+      "label": "No cell ended in an error",
+      "points": 10,
+      "path": "day04b_notebook.ipynb"
+    },
+    {
+      "type": "notebook_outputs_contain",
+      "label": "Milestones 0, 1 and 4 printed their 'done' messages, and milestone 5 its cost",
+      "points": 20,
+      "path": "day04b_notebook.ipynb",
+      "patterns": [
+        "M0 done",
+        "M1 done",
+        "M4 done",
+        "Cost per ticket"
+      ]
+    },
+    {
+      "type": "notebook_outputs_contain",
+      "label": "Milestone 1 scored 10 or more out of 12",
+      "points": 10,
+      "path": "day04b_notebook.ipynb",
+      "patterns": [
+        "M1: (1[0-2])/12"
+      ]
+    },
+    {
+      "type": "notebook_outputs_contain",
+      "label": "Milestone 3 drafted both replies",
+      "points": 5,
+      "path": "day04b_notebook.ipynb",
+      "patterns": [
+        "M3: 2/2"
+      ]
+    },
+    {
+      "type": "notebook_outputs_contain",
+      "label": "Milestone 2 printed its two-level table",
+      "points": 5,
+      "path": "day04b_notebook.ipynb",
+      "patterns": [
+        "level\\s+correct"
+      ]
+    },
+    {
+      "type": "notebook_text_absent",
+      "label": "Your milestone 2 sentence and lab report replace the TODO placeholders",
+      "points": 10,
+      "path": "day04b_notebook.ipynb",
+      "patterns": [
+        "TODO: which thinking level",
+        "TODO: Which single prompt",
+        "TODO: Which ticket",
+        "TODO: What is one thing"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 15
+    }
+  ]
+}

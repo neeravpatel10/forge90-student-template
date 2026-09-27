@@ -1,0 +1,129 @@
+{
+  "day": "day05",
+  "pass_mark": 80,
+  "title": "Day 05: Red-team your support bot",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "day05_answers.md exists",
+      "points": 4,
+      "path": "day05_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (250+ words)",
+      "points": 4,
+      "path": "day05_answers.md",
+      "words": 250
+    },
+    {
+      "type": "sections",
+      "label": "Has Parts A, B, C, D and E",
+      "points": 15,
+      "path": "day05_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D",
+        "Part E"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "Tables have rows for your five attacks",
+      "points": 4,
+      "path": "day05_answers.md",
+      "pattern": "^\\s*\\|.*\\|",
+      "count": 9
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part E has eight checklist items",
+      "points": 10,
+      "path": "day05_answers.md",
+      "pattern": "^\\s*[-*]\\s*\\[[ xX]?\\]",
+      "count": 8
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part E names risks from the notes (NIST or OWASP)",
+      "points": 3,
+      "path": "day05_answers.md",
+      "pattern": "NIST|OWASP",
+      "count": 3
+    },
+    {
+      "type": "file_exists",
+      "label": "red_team.py exists",
+      "points": 4,
+      "path": "red_team.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "red_team.py has no syntax errors",
+      "points": 4,
+      "path": "red_team.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "red_team.py uses the shared bot code and run_v2",
+      "points": 6,
+      "path": "red_team.py",
+      "patterns": [
+        "day05_demo_common",
+        "run_v2",
+        "V1_SYSTEM",
+        "make_client|genai.Client"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day05_demo_common.py is copied next to your script",
+      "points": 2,
+      "path": "day05_demo_common.py"
+    },
+    {
+      "type": "file_exists",
+      "label": "redact.py exists",
+      "points": 4,
+      "path": "redact.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "redact.py has no syntax errors",
+      "points": 3,
+      "path": "redact.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "redact.py has an SSN pattern",
+      "points": 3,
+      "path": "redact.py",
+      "patterns": [
+        "SSN",
+        "\\\\d\\{3\\}"
+      ]
+    },
+    {
+      "type": "py_runs",
+      "label": "redact.py runs and all its own tests pass",
+      "points": 15,
+      "path": "redact.py",
+      "timeout": 30
+    },
+    {
+      "type": "count_at_least",
+      "label": "redact.py has your three new tests (7 or more in total)",
+      "points": 4,
+      "path": "redact.py",
+      "pattern": "^\\s*\\(\".*\",\\s*\\[",
+      "count": 7
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 15
+    }
+  ]
+}

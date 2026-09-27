@@ -1,0 +1,5 @@
+# Week 01 dependencies. Works with both `uv pip install -r requirements.txt`
+# and `python -m pip install -r requirements.txt`. Tested on Python 3.13.
+google-genai==2.24.0
+python-dotenv==1.2.3
+ipykernel==7.3.0

@@ -1,0 +1,102 @@
+{
+  "day": "day04",
+  "pass_mark": 80,
+  "title": "Day 04: Rebuild a prompt, measure the difference",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "prompt_lab.py exists",
+      "points": 8,
+      "path": "prompt_lab.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "prompt_lab.py has no syntax errors",
+      "points": 8,
+      "path": "prompt_lab.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "prompt_lab.py uses system_instruction, tags, examples and thinking_level",
+      "points": 18,
+      "path": "prompt_lab.py",
+      "patterns": [
+        "system_instruction",
+        "<role>|<rules>|<examples>",
+        "<example",
+        "thinking_level",
+        "interactions\\.create",
+        "TICKETS"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "prompt_lab.py has a two-step chain (extract, then reply)",
+      "points": 5,
+      "path": "prompt_lab.py",
+      "patterns": [
+        "extract",
+        "reply"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day04_answers.md exists",
+      "points": 8,
+      "path": "day04_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (150+ words)",
+      "points": 6,
+      "path": "day04_answers.md",
+      "words": 150
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 12,
+      "path": "day04_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "Parts A and B report accuracy out of 10",
+      "points": 8,
+      "path": "day04_answers.md",
+      "pattern": "\\d+\\s*/\\s*10",
+      "count": 4
+    },
+    {
+      "type": "contains_all",
+      "label": "Part C reports both thinking levels and thought tokens",
+      "points": 6,
+      "path": "day04_answers.md",
+      "patterns": [
+        "thought",
+        "minimal",
+        "high"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part D shows both chain steps",
+      "points": 6,
+      "path": "day04_answers.md",
+      "patterns": [
+        "step 1",
+        "step 2"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 15
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "day": "day01",
+  "pass_mark": 80,
+  "title": "Day 01: The GenAI landscape (written answers)",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "day01_answers.md exists",
+      "points": 15,
+      "path": "day01_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (150+ words)",
+      "points": 10,
+      "path": "day01_answers.md",
+      "words": 150
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, Part B and Part C",
+      "points": 24,
+      "path": "day01_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part A names a generative and a non-generative feature",
+      "points": 8,
+      "path": "day01_answers.md",
+      "patterns": [
+        "generative",
+        "non-generative|not generative|traditional|rules"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part B gives a choice for all five tasks",
+      "points": 10,
+      "path": "day01_answers.md",
+      "pattern": "\\b(rules|traditional ML|GenAI|combination)\\b",
+      "count": 5
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part B gives a risk for each task",
+      "points": 8,
+      "path": "day01_answers.md",
+      "pattern": "\\brisk",
+      "count": 5
+    },
+    {
+      "type": "contains_all",
+      "label": "Part C gives characters, words and tokens",
+      "points": 10,
+      "path": "day01_answers.md",
+      "patterns": [
+        "character",
+        "word",
+        "token"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 15
+    }
+  ]
+}

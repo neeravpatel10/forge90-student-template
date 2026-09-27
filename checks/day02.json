@@ -1,0 +1,101 @@
+{
+  "day": "day02",
+  "pass_mark": 80,
+  "title": "Day 02: Your workbench and hello_model.py",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "day02_answers.md exists",
+      "points": 8,
+      "path": "day02_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (150+ words)",
+      "points": 6,
+      "path": "day02_answers.md",
+      "words": 150
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, Part B and Part D",
+      "points": 12,
+      "path": "day02_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part A shows Python and Git working",
+      "points": 6,
+      "path": "day02_answers.md",
+      "patterns": [
+        "python",
+        "git"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part B gives percentage differences",
+      "points": 8,
+      "path": "day02_answers.md",
+      "pattern": "\\d+(\\.\\d+)?\\s*%",
+      "count": 2
+    },
+    {
+      "type": "contains_all",
+      "label": "Part D describes both failures (wrong model, missing key)",
+      "points": 8,
+      "path": "day02_answers.md",
+      "patterns": [
+        "notfound|404|not found",
+        "valueerror|no api key|api key"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Explains why .env is ignored by Git",
+      "points": 4,
+      "path": "day02_answers.md",
+      "patterns": [
+        "\\.gitignore|ignore"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "hello_model.py exists",
+      "points": 8,
+      "path": "hello_model.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "hello_model.py has no syntax errors",
+      "points": 8,
+      "path": "hello_model.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "hello_model.py has the six required pieces",
+      "points": 17,
+      "path": "hello_model.py",
+      "patterns": [
+        "load_dotenv",
+        "system_instruction",
+        "interactions\\.create",
+        "try:",
+        "except",
+        "0\\.30",
+        "2\\.50",
+        "10[_,]?000"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 15
+    }
+  ]
+}

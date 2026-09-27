@@ -1,0 +1,16 @@
+# Secrets: NEVER commit these
+.env
+*.env
+
+# Python and notebooks
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

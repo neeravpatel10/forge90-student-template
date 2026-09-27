@@ -1,0 +1,95 @@
+{
+  "day": "day03",
+  "pass_mark": 80,
+  "title": "Day 03: A trimming chat loop and a sampling comparison",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "chat_loop.py exists",
+      "points": 10,
+      "path": "chat_loop.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "chat_loop.py has no syntax errors",
+      "points": 10,
+      "path": "chat_loop.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "chat_loop.py has the history, budget and trimming pieces",
+      "points": 20,
+      "path": "chat_loop.py",
+      "patterns": [
+        "HISTORY_TOKEN_BUDGET",
+        "count_tokens",
+        "pop\\(|del ",
+        "user_input",
+        "interactions\\.create",
+        "previous|model_dump|steps"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day03_answers.md exists",
+      "points": 7,
+      "path": "day03_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (120+ words)",
+      "points": 6,
+      "path": "day03_answers.md",
+      "words": 120
+    },
+    {
+      "type": "sections",
+      "label": "Has Part B, Part C and Part D",
+      "points": 12,
+      "path": "day03_answers.md",
+      "patterns": [
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part B reports both budgets and the order number",
+      "points": 8,
+      "path": "day03_answers.md",
+      "patterns": [
+        "7734",
+        "\\b150\\b",
+        "\\b60\\b"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part C reports the top_p settings",
+      "points": 6,
+      "path": "day03_answers.md",
+      "patterns": [
+        "top_p|top-p",
+        "0\\.1",
+        "0\\.95"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part D reports both thinking levels and thought tokens",
+      "points": 6,
+      "path": "day03_answers.md",
+      "patterns": [
+        "minimal",
+        "high",
+        "thought"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 15
+    }
+  ]
+}
