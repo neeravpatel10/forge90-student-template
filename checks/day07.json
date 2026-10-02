@@ -1,0 +1,91 @@
+{
+  "day": "day07",
+  "pass_mark": 80,
+  "title": "Day 07: Reshape the library",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "library.py exists",
+      "points": 8,
+      "path": "library.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "library.py has no syntax errors",
+      "points": 8,
+      "path": "library.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "library.py builds the list, dict and set from BOOKS (Part A)",
+      "points": 16,
+      "path": "library.py",
+      "patterns": [
+        "BOOKS",
+        "for book in BOOKS",
+        "by_title",
+        "genres"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "library.py has a comprehension and loop over unread books (Part B)",
+      "points": 8,
+      "path": "library.py",
+      "patterns": [
+        "not book\\[.read.\\]",
+        "in \\("
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "library.py uses real type hints: dict[str, object], list[Book], Book | None (Part C)",
+      "points": 12,
+      "path": "library.py",
+      "patterns": [
+        "dict\\[str,\\s*object\\]",
+        "Book\\s*\\|\\s*None",
+        "list\\[Book\\]"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day07_answers.md exists",
+      "points": 8,
+      "path": "day07_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (100+ words)",
+      "points": 6,
+      "path": "day07_answers.md",
+      "words": 100
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B and C",
+      "points": 12,
+      "path": "day07_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part C pastes the real error from skipping the None check",
+      "points": 10,
+      "path": "day07_answers.md",
+      "patterns": [
+        "TypeError",
+        "NoneType"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 12
+    }
+  ]
+}
