@@ -1,0 +1,96 @@
+{
+  "day": "day08",
+  "pass_mark": 80,
+  "title": "Day 08: Fix the sloppy script",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "day08_demo_sloppy_books.py is copied next to your script",
+      "points": 6,
+      "path": "day08_demo_sloppy_books.py"
+    },
+    {
+      "type": "file_exists",
+      "label": "library_tools.py exists",
+      "points": 8,
+      "path": "library_tools.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "library_tools.py has no syntax errors",
+      "points": 8,
+      "path": "library_tools.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "library_tools.py catches specific exceptions, not a bare except (Part A)",
+      "points": 16,
+      "path": "library_tools.py",
+      "patterns": [
+        "except KeyError",
+        "except (TypeError, ValueError)|except ValueError",
+        "RAW_BOOKS"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "library_tools.py has a keyword-only oldest_book (Part B)",
+      "points": 12,
+      "path": "library_tools.py",
+      "patterns": [
+        "def oldest_book\\(books,\\s*\\*",
+        "genre=None"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "library_tools.py does the JSON round trip and the set dump (Part C)",
+      "points": 10,
+      "path": "library_tools.py",
+      "patterns": [
+        "json.dumps",
+        "json.loads",
+        "Path\\("
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day08_answers.md exists",
+      "points": 8,
+      "path": "day08_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (100+ words)",
+      "points": 6,
+      "path": "day08_answers.md",
+      "words": 100
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B and C",
+      "points": 12,
+      "path": "day08_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part A and Part C paste real errors (KeyError and set TypeError)",
+      "points": 8,
+      "path": "day08_answers.md",
+      "patterns": [
+        "KeyError",
+        "not JSON serializable|TypeError"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 6
+    }
+  ]
+}
