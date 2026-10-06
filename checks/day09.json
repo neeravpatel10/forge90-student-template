@@ -1,0 +1,84 @@
+{
+  "day": "day09",
+  "pass_mark": 80,
+  "title": "Day 09: Chain it all together",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "demos/day09_demo_library_raw.json is copied next to your notebook",
+      "points": 5,
+      "path": "demos/day09_demo_library_raw.json"
+    },
+    {
+      "type": "notebook_valid",
+      "label": "day09_notebook.ipynb has all 5 milestones",
+      "points": 6,
+      "path": "day09_notebook.ipynb",
+      "cells": 10
+    },
+    {
+      "type": "notebook_executed",
+      "label": "Every code cell was run",
+      "points": 10,
+      "path": "day09_notebook.ipynb",
+      "min_fraction": 0.9
+    },
+    {
+      "type": "notebook_no_errors",
+      "label": "No cell ended in an error",
+      "points": 15,
+      "path": "day09_notebook.ipynb"
+    },
+    {
+      "type": "notebook_outputs_contain",
+      "label": "Milestone 1 reports 8 good records and 2 errors",
+      "points": 12,
+      "path": "day09_notebook.ipynb",
+      "patterns": [
+        "8 good",
+        "2 errors"
+      ]
+    },
+    {
+      "type": "notebook_outputs_contain",
+      "label": "Milestone 3's round trip matches",
+      "points": 10,
+      "path": "day09_notebook.ipynb",
+      "patterns": [
+        "round trip matches:\\s*True"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day09_summary.json was generated and kept",
+      "points": 8,
+      "path": "day09_summary.json"
+    },
+    {
+      "type": "file_exists",
+      "label": "day09_answers.md exists",
+      "points": 8,
+      "path": "day09_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (80+ words)",
+      "points": 6,
+      "path": "day09_answers.md",
+      "words": 80
+    },
+    {
+      "type": "count_at_least",
+      "label": "All six topics have a 1-5 rating",
+      "points": 10,
+      "path": "day09_answers.md",
+      "pattern": "[1-5]\\s*/\\s*5",
+      "count": 6
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 10
+    }
+  ]
+}
