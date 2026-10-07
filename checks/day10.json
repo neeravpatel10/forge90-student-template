@@ -1,0 +1,77 @@
+{
+  "day": "day10",
+  "pass_mark": 80,
+  "title": "Day 10: Make the call yourself",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "raw_calls.py exists",
+      "points": 8,
+      "path": "raw_calls.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "raw_calls.py has no syntax errors",
+      "points": 8,
+      "path": "raw_calls.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "raw_calls.py has ask_raw using httpx2 and the right auth header (Part A)",
+      "points": 20,
+      "path": "raw_calls.py",
+      "patterns": [
+        "def ask_raw",
+        "httpx2",
+        "x-goog-api-key",
+        "previous_interaction_id"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "A real 3-turn chain: previous_id passed at least twice (Part B)",
+      "points": 10,
+      "path": "raw_calls.py",
+      "pattern": "previous_id\\s*=",
+      "count": 2
+    },
+    {
+      "type": "file_exists",
+      "label": "day10_answers.md exists",
+      "points": 8,
+      "path": "day10_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (100+ words)",
+      "points": 6,
+      "path": "day10_answers.md",
+      "words": 100
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B and C",
+      "points": 12,
+      "path": "day10_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part C names a real raw-only usage field",
+      "points": 8,
+      "path": "day10_answers.md",
+      "patterns": [
+        "raw_prompt_token|model_invocation_token_counts|non_grounding_model_invocation_token_counts|token"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 20
+    }
+  ]
+}
