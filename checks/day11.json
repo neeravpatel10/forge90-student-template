@@ -1,0 +1,79 @@
+{
+  "day": "day11",
+  "pass_mark": 80,
+  "title": "Day 11: Concurrent calls, measured",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "async_calls.py exists",
+      "points": 8,
+      "path": "async_calls.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "async_calls.py has no syntax errors",
+      "points": 8,
+      "path": "async_calls.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "async_calls.py has async ask(), sequential and concurrent runners, asyncio.run (Part A)",
+      "points": 18,
+      "path": "async_calls.py",
+      "patterns": [
+        "async def ask",
+        "def run_sequential",
+        "def run_concurrent",
+        "asyncio.gather",
+        "asyncio.run"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "async_calls.py has a deliberate failure handled with return_exceptions (Part B)",
+      "points": 14,
+      "path": "async_calls.py",
+      "patterns": [
+        "return_exceptions\\s*=\\s*True",
+        "gemini-does-not-exist|does-not-exist|does_not_exist"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day11_answers.md exists",
+      "points": 8,
+      "path": "day11_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (100+ words)",
+      "points": 6,
+      "path": "day11_answers.md",
+      "words": 100
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B and C",
+      "points": 12,
+      "path": "day11_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part A reports two real timings (seconds)",
+      "points": 6,
+      "path": "day11_answers.md",
+      "pattern": "\\d+(\\.\\d+)?\\s*s(econds)?",
+      "count": 2
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 20
+    }
+  ]
+}
