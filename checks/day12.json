@@ -1,0 +1,95 @@
+{
+  "day": "day12",
+  "pass_mark": 80,
+  "title": "Day 12: Validate, then deliberately break it",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "models.py exists",
+      "points": 8,
+      "path": "models.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "models.py has no syntax errors",
+      "points": 8,
+      "path": "models.py"
+    },
+    {
+      "type": "py_runs",
+      "label": "models.py runs end to end",
+      "points": 10,
+      "path": "models.py",
+      "timeout": 30
+    },
+    {
+      "type": "contains_all",
+      "label": "models.py defines a BaseModel with required and optional fields (Part A)",
+      "points": 14,
+      "path": "models.py",
+      "patterns": [
+        "class \\w+\\(BaseModel\\)",
+        "ValidationError"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "models.py uses a Field() constraint (Part C)",
+      "points": 10,
+      "path": "models.py",
+      "patterns": [
+        "Field\\("
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "models.py reproduces the extra-fields gotcha with extra='forbid' (Part D)",
+      "points": 12,
+      "path": "models.py",
+      "patterns": [
+        "model_config",
+        "extra.*forbid"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day12_answers.md exists",
+      "points": 8,
+      "path": "day12_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (100+ words)",
+      "points": 6,
+      "path": "day12_answers.md",
+      "words": 100
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 10,
+      "path": "day12_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part B and D paste real errors (int_parsing / extra_forbidden style messages)",
+      "points": 6,
+      "path": "day12_answers.md",
+      "patterns": [
+        "valid integer|should be a valid|Input should",
+        "Extra inputs are not permitted|not permitted"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 8
+    }
+  ]
+}
