@@ -1,0 +1,95 @@
+{
+  "day": "day13",
+  "pass_mark": 80,
+  "title": "Day 13: Nest it, validate it",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "nested_models.py exists",
+      "points": 8,
+      "path": "nested_models.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "nested_models.py has no syntax errors",
+      "points": 8,
+      "path": "nested_models.py"
+    },
+    {
+      "type": "py_runs",
+      "label": "nested_models.py runs end to end",
+      "points": 10,
+      "path": "nested_models.py",
+      "timeout": 30
+    },
+    {
+      "type": "contains_all",
+      "label": "nested_models.py has an outer model with a list[InnerModel] field (Part A)",
+      "points": 14,
+      "path": "nested_models.py",
+      "patterns": [
+        "class \\w+\\(BaseModel\\)",
+        "list\\[\\w+\\]",
+        "ValidationError"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "nested_models.py uses @field_validator (Part C)",
+      "points": 10,
+      "path": "nested_models.py",
+      "patterns": [
+        "@field_validator",
+        "@classmethod"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "nested_models.py uses @model_validator (Part D)",
+      "points": 10,
+      "path": "nested_models.py",
+      "patterns": [
+        "@model_validator"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day13_answers.md exists",
+      "points": 8,
+      "path": "day13_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (100+ words)",
+      "points": 6,
+      "path": "day13_answers.md",
+      "words": 100
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 10,
+      "path": "day13_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part B states a real loc tuple",
+      "points": 8,
+      "path": "day13_answers.md",
+      "patterns": [
+        "loc"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 8
+    }
+  ]
+}
