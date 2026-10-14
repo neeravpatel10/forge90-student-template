@@ -1,0 +1,82 @@
+{
+  "day": "day14",
+  "pass_mark": 80,
+  "title": "Day 14: Design your own structured response",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "structured_ask.py exists",
+      "points": 8,
+      "path": "structured_ask.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "structured_ask.py has no syntax errors",
+      "points": 8,
+      "path": "structured_ask.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "structured_ask.py defines a response model and uses ask_structured wrapped in try/except (Part A/B)",
+      "points": 18,
+      "path": "structured_ask.py",
+      "patterns": [
+        "class \\w+\\(BaseModel\\)",
+        "model_json_schema",
+        "model_validate_json",
+        "try:",
+        "except httpx2\\.HTTPStatusError"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "structured_ask.py forces a real validation failure and a real request failure (Part C/D)",
+      "points": 12,
+      "path": "structured_ask.py",
+      "patterns": [
+        "ValidationError",
+        "raise_for_status"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day14_answers.md exists",
+      "points": 8,
+      "path": "day14_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (100+ words)",
+      "points": 6,
+      "path": "day14_answers.md",
+      "words": 100
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 12,
+      "path": "day14_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part C pastes a real validation error, Part D pastes a real caught request error",
+      "points": 10,
+      "path": "day14_answers.md",
+      "patterns": [
+        "Field required|validation error",
+        "request failed|404|HTTPStatusError"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}
