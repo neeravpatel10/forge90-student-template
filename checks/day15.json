@@ -1,0 +1,96 @@
+{
+  "day": "day15",
+  "pass_mark": 80,
+  "title": "Day 15: Build a real route",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "app.py exists",
+      "points": 8,
+      "path": "app.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "app.py has no syntax errors",
+      "points": 8,
+      "path": "app.py"
+    },
+    {
+      "type": "py_runs",
+      "label": "app.py runs end to end",
+      "points": 10,
+      "path": "app.py",
+      "timeout": 30
+    },
+    {
+      "type": "contains_all",
+      "label": "app.py defines a model and a body route (Part A)",
+      "points": 14,
+      "path": "app.py",
+      "patterns": [
+        "class \\w+\\(BaseModel\\)",
+        "@app\\.post",
+        "TestClient"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "app.py has a path parameter route and a query parameter route (Part C)",
+      "points": 14,
+      "path": "app.py",
+      "patterns": [
+        "@app\\.get\\([\"'][^\"']*\\{",
+        "@app\\.get"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "app.py uses response_model (Part D)",
+      "points": 10,
+      "path": "app.py",
+      "patterns": [
+        "response_model"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day15_answers.md exists",
+      "points": 8,
+      "path": "day15_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (100+ words)",
+      "points": 6,
+      "path": "day15_answers.md",
+      "words": 100
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 10,
+      "path": "day15_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part B pastes the real 422 detail keys",
+      "points": 6,
+      "path": "day15_answers.md",
+      "patterns": [
+        "loc",
+        "422|validation"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 6
+    }
+  ]
+}
