@@ -1,0 +1,94 @@
+{
+  "day": "day16",
+  "pass_mark": 80,
+  "title": "Day 16: Build a full CRUD service around a real LLM call",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "crud_service.py exists",
+      "points": 8,
+      "path": "crud_service.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "crud_service.py has no syntax errors",
+      "points": 8,
+      "path": "crud_service.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "crud_service.py defines a model, an async LLM-backed create route, and try/except (Part A)",
+      "points": 16,
+      "path": "crud_service.py",
+      "patterns": [
+        "class \\w+\\(BaseModel\\)",
+        "async def",
+        "await",
+        "try:",
+        "except httpx2\\.HTTPStatusError"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "crud_service.py has the full verb set: POST, GET, PUT, DELETE (Parts A-D)",
+      "points": 14,
+      "path": "crud_service.py",
+      "patterns": [
+        "@app\\.post",
+        "@app\\.get",
+        "@app\\.put",
+        "@app\\.delete"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "crud_service.py raises both a 404 and a 502 HTTPException (Parts B/D)",
+      "points": 10,
+      "path": "crud_service.py",
+      "patterns": [
+        "HTTPException\\(status_code=404",
+        "HTTPException\\(status_code=502"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day16_answers.md exists",
+      "points": 8,
+      "path": "day16_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (100+ words)",
+      "points": 6,
+      "path": "day16_answers.md",
+      "words": 100
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 10,
+      "path": "day16_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part B/D paste the real 404 and the real caught 502",
+      "points": 6,
+      "path": "day16_answers.md",
+      "patterns": [
+        "404",
+        "502"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 14
+    }
+  ]
+}
