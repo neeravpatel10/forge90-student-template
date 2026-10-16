@@ -18,7 +18,7 @@
     {
       "type": "contains_all",
       "label": "crud_service.py defines a model, an async LLM-backed create route, and try/except (Part A)",
-      "points": 16,
+      "points": 14,
       "path": "crud_service.py",
       "patterns": [
         "class \\w+\\(BaseModel\\)",
@@ -30,20 +30,21 @@
     },
     {
       "type": "contains_all",
-      "label": "crud_service.py has the full verb set: POST, GET, PUT, DELETE (Parts A-D)",
+      "label": "crud_service.py has the full verb set: POST, GET, PUT, PATCH, DELETE (Parts A-E)",
       "points": 14,
       "path": "crud_service.py",
       "patterns": [
         "@app\\.post",
         "@app\\.get",
         "@app\\.put",
+        "@app\\.patch",
         "@app\\.delete"
       ]
     },
     {
       "type": "contains_all",
-      "label": "crud_service.py raises both a 404 and a 502 HTTPException (Parts B/D)",
-      "points": 10,
+      "label": "crud_service.py raises both a 404 and a 502 HTTPException (Parts B/E)",
+      "points": 8,
       "path": "crud_service.py",
       "patterns": [
         "HTTPException\\(status_code=404",
@@ -51,9 +52,19 @@
       ]
     },
     {
+      "type": "contains_all",
+      "label": "PATCH route uses a separate model and exclude_unset=True (Part D)",
+      "points": 8,
+      "path": "crud_service.py",
+      "patterns": [
+        "exclude_unset=True",
+        "model_copy"
+      ]
+    },
+    {
       "type": "file_exists",
       "label": "day16_answers.md exists",
-      "points": 8,
+      "points": 6,
       "path": "day16_answers.md"
     },
     {
@@ -65,19 +76,20 @@
     },
     {
       "type": "sections",
-      "label": "Has Part A, B, C and D",
+      "label": "Has Part A, B, C, D and E",
       "points": 10,
       "path": "day16_answers.md",
       "patterns": [
         "Part A",
         "Part B",
         "Part C",
-        "Part D"
+        "Part D",
+        "Part E"
       ]
     },
     {
       "type": "contains_all",
-      "label": "Part B/D paste the real 404 and the real caught 502",
+      "label": "Part B/E paste the real 404 and the real caught 502",
       "points": 6,
       "path": "day16_answers.md",
       "patterns": [
@@ -88,7 +100,7 @@
     {
       "type": "no_secrets",
       "label": "No API key or .env in your repo (including git history)",
-      "points": 14
+      "points": 12
     }
   ]
 }
