@@ -1,0 +1,93 @@
+{
+  "day": "day18",
+  "pass_mark": 80,
+  "title": "Day 18: Checkpoint 1 — AI Microservice",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "app.py exists",
+      "points": 6,
+      "path": "app.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "app.py has no syntax errors",
+      "points": 6,
+      "path": "app.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Two models, an async LLM-backed create route, and try/except (the core deliverable)",
+      "points": 20,
+      "path": "app.py",
+      "patterns": [
+        "class \\w+\\(BaseModel\\)",
+        "async def",
+        "await",
+        "try:",
+        "except httpx2\\.HTTPStatusError"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Full verb set: POST, GET, PUT or PATCH, DELETE",
+      "points": 16,
+      "path": "app.py",
+      "patterns": [
+        "@app\\.post",
+        "@app\\.get",
+        "@app\\.put|@app\\.patch",
+        "@app\\.delete"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Raises both a 404 and a 502 HTTPException",
+      "points": 10,
+      "path": "app.py",
+      "patterns": [
+        "HTTPException\\(status_code=404",
+        "HTTPException\\(status_code=502"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day18_answers.md exists",
+      "points": 5,
+      "path": "day18_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Write-up is a reasonable length (80+ words)",
+      "points": 5,
+      "path": "day18_answers.md",
+      "words": 80
+    },
+    {
+      "type": "contains_all",
+      "label": "Names the chosen option and explains the prompt design",
+      "points": 6,
+      "path": "day18_answers.md",
+      "patterns": [
+        "Application|Screener|Review|Study Plan|Listing|Property",
+        "prompt"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Pastes real 201, 404, and 502 output",
+      "points": 6,
+      "path": "day18_answers.md",
+      "patterns": [
+        "201",
+        "404",
+        "502"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 20
+    }
+  ]
+}
