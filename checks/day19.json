@@ -1,0 +1,80 @@
+{
+  "day": "day19",
+  "pass_mark": 80,
+  "title": "Day 19: Embed your own text",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "embed_text.py exists",
+      "points": 8,
+      "path": "embed_text.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "embed_text.py has no syntax errors",
+      "points": 8,
+      "path": "embed_text.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Uses embedContent, batchEmbedContents, and both task types (Parts A-C)",
+      "points": 24,
+      "path": "embed_text.py",
+      "patterns": [
+        "embedContent",
+        "batchEmbedContents",
+        "RETRIEVAL_DOCUMENT",
+        "RETRIEVAL_QUERY"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Actually compares vectors and checks lengths in code (Part B/C)",
+      "points": 10,
+      "path": "embed_text.py",
+      "patterns": [
+        "==",
+        "len\\("
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day19_answers.md exists",
+      "points": 8,
+      "path": "day19_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (80+ words)",
+      "points": 6,
+      "path": "day19_answers.md",
+      "words": 80
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B and C",
+      "points": 10,
+      "path": "day19_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Pastes real evidence: the 3072 vector length and the non-identical comparison",
+      "points": 6,
+      "path": "day19_answers.md",
+      "patterns": [
+        "3072",
+        "False|not identical|different"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 20
+    }
+  ]
+}
