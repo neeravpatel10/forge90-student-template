@@ -1,0 +1,80 @@
+{
+  "day": "day20",
+  "pass_mark": 80,
+  "title": "Day 20: Compare your own sentences, cloud and local",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "compare_similarity.py exists",
+      "points": 8,
+      "path": "compare_similarity.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "compare_similarity.py has no syntax errors",
+      "points": 8,
+      "path": "compare_similarity.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Defines dot, magnitude, and cosine_similarity by hand (Part A)",
+      "points": 16,
+      "path": "compare_similarity.py",
+      "patterns": [
+        "def dot",
+        "def magnitude",
+        "def cosine_similarity"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Calls both Gemini and Ollama for real embeddings (Part B)",
+      "points": 20,
+      "path": "compare_similarity.py",
+      "patterns": [
+        "embed_content",
+        "127\\.0\\.0\\.1",
+        "nomic-embed-text"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day20_answers.md exists",
+      "points": 8,
+      "path": "day20_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (80+ words)",
+      "points": 6,
+      "path": "day20_answers.md",
+      "words": 80
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B and C",
+      "points": 10,
+      "path": "day20_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Reports both real gaps and explains why they differ",
+      "points": 6,
+      "path": "day20_answers.md",
+      "patterns": [
+        "gap",
+        "different|disagree|vary|training"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}
