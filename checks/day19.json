@@ -17,24 +17,24 @@
     },
     {
       "type": "contains_all",
-      "label": "Uses embedContent, batchEmbedContents, and both task types (Parts A-C)",
-      "points": 24,
+      "label": "Uses embed_content with both task types (Parts A-B)",
+      "points": 20,
       "path": "embed_text.py",
       "patterns": [
-        "embedContent",
-        "batchEmbedContents",
+        "embed_content",
         "RETRIEVAL_DOCUMENT",
         "RETRIEVAL_QUERY"
       ]
     },
     {
       "type": "contains_all",
-      "label": "Actually compares vectors and checks lengths in code (Part B/C)",
-      "points": 10,
+      "label": "Catches a real errors.ClientError (Part C)",
+      "points": 14,
       "path": "embed_text.py",
       "patterns": [
-        "==",
-        "len\\("
+        "try:",
+        "except",
+        "ClientError"
       ]
     },
     {
