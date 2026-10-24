@@ -6,19 +6,19 @@
     {
       "type": "file_exists",
       "label": "compare_similarity.py exists",
-      "points": 8,
+      "points": 6,
       "path": "compare_similarity.py"
     },
     {
       "type": "py_compiles",
       "label": "compare_similarity.py has no syntax errors",
-      "points": 8,
+      "points": 6,
       "path": "compare_similarity.py"
     },
     {
       "type": "contains_all",
       "label": "Defines dot, magnitude, and cosine_similarity by hand (Part A)",
-      "points": 16,
+      "points": 14,
       "path": "compare_similarity.py",
       "patterns": [
         "def dot",
@@ -29,7 +29,7 @@
     {
       "type": "contains_all",
       "label": "Calls both Gemini and Ollama for real embeddings (Part B)",
-      "points": 20,
+      "points": 16,
       "path": "compare_similarity.py",
       "patterns": [
         "embed_content",
@@ -38,33 +38,45 @@
       ]
     },
     {
+      "type": "contains_all",
+      "label": "Builds a real ranking with RETRIEVAL_QUERY/RETRIEVAL_DOCUMENT and sorts it (Part D)",
+      "points": 14,
+      "path": "compare_similarity.py",
+      "patterns": [
+        "RETRIEVAL_QUERY",
+        "RETRIEVAL_DOCUMENT",
+        "sort"
+      ]
+    },
+    {
       "type": "file_exists",
       "label": "day20_answers.md exists",
-      "points": 8,
+      "points": 6,
       "path": "day20_answers.md"
     },
     {
       "type": "min_words",
       "label": "Answers are a reasonable length (80+ words)",
-      "points": 6,
+      "points": 5,
       "path": "day20_answers.md",
       "words": 80
     },
     {
       "type": "sections",
-      "label": "Has Part A, B and C",
+      "label": "Has Part A, B, C and D",
       "points": 10,
       "path": "day20_answers.md",
       "patterns": [
         "Part A",
         "Part B",
-        "Part C"
+        "Part C",
+        "Part D"
       ]
     },
     {
       "type": "contains_all",
       "label": "Reports both real gaps and explains why they differ",
-      "points": 6,
+      "points": 5,
       "path": "day20_answers.md",
       "patterns": [
         "gap",
