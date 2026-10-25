@@ -18,7 +18,7 @@
     {
       "type": "contains_all",
       "label": "Uses recursive_split with a chosen max_size (Part A)",
-      "points": 15,
+      "points": 10,
       "path": "chunk_document.py",
       "patterns": [
         "def recursive_split",
@@ -28,7 +28,7 @@
     {
       "type": "contains_all",
       "label": "Uses count_tokens for real token counts (Part B)",
-      "points": 10,
+      "points": 8,
       "path": "chunk_document.py",
       "patterns": [
         "count_tokens"
@@ -36,8 +36,18 @@
     },
     {
       "type": "contains_all",
-      "label": "Runs a real precision comparison with RETRIEVAL_QUERY/RETRIEVAL_DOCUMENT and sorts it (Part C)",
-      "points": 15,
+      "label": "Runs semantic chunking with a sentence split and SEMANTIC_SIMILARITY (Part C)",
+      "points": 12,
+      "path": "chunk_document.py",
+      "patterns": [
+        "SEMANTIC_SIMILARITY",
+        "semantic_chunks"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Runs a real precision comparison with RETRIEVAL_QUERY/RETRIEVAL_DOCUMENT and sorts it (Part D)",
+      "points": 12,
       "path": "chunk_document.py",
       "patterns": [
         "RETRIEVAL_QUERY",
@@ -48,25 +58,26 @@
     {
       "type": "file_exists",
       "label": "day21_answers.md exists",
-      "points": 7,
+      "points": 6,
       "path": "day21_answers.md"
     },
     {
       "type": "min_words",
       "label": "Answers are a reasonable length (80+ words)",
-      "points": 6,
+      "points": 5,
       "path": "day21_answers.md",
       "words": 80
     },
     {
       "type": "sections",
-      "label": "Has Part A, B and C",
+      "label": "Has Part A, B, C and D",
       "points": 10,
       "path": "day21_answers.md",
       "patterns": [
         "Part A",
         "Part B",
-        "Part C"
+        "Part C",
+        "Part D"
       ]
     },
     {
