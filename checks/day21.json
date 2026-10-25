@@ -1,0 +1,88 @@
+{
+  "day": "day21",
+  "pass_mark": 80,
+  "title": "Day 21: Chunk the real document yourself",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "chunk_document.py exists",
+      "points": 7,
+      "path": "chunk_document.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "chunk_document.py has no syntax errors",
+      "points": 7,
+      "path": "chunk_document.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Uses recursive_split with a chosen max_size (Part A)",
+      "points": 15,
+      "path": "chunk_document.py",
+      "patterns": [
+        "def recursive_split",
+        "max_size"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Uses count_tokens for real token counts (Part B)",
+      "points": 10,
+      "path": "chunk_document.py",
+      "patterns": [
+        "count_tokens"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Runs a real precision comparison with RETRIEVAL_QUERY/RETRIEVAL_DOCUMENT and sorts it (Part C)",
+      "points": 15,
+      "path": "chunk_document.py",
+      "patterns": [
+        "RETRIEVAL_QUERY",
+        "RETRIEVAL_DOCUMENT",
+        "sort"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day21_answers.md exists",
+      "points": 7,
+      "path": "day21_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (80+ words)",
+      "points": 6,
+      "path": "day21_answers.md",
+      "words": 80
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B and C",
+      "points": 10,
+      "path": "day21_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Pastes real token counts and real similarity scores",
+      "points": 5,
+      "path": "day21_answers.md",
+      "patterns": [
+        "token",
+        "0\\.\\d"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}
