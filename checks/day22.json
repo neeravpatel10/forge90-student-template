@@ -1,0 +1,102 @@
+{
+  "day": "day22",
+  "pass_mark": 80,
+  "title": "Day 22: Build your own Chroma collection",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "vector_store.py exists",
+      "points": 6,
+      "path": "vector_store.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "vector_store.py has no syntax errors",
+      "points": 6,
+      "path": "vector_store.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Creates a persistent, cosine-configured collection (Part A)",
+      "points": 12,
+      "path": "vector_store.py",
+      "patterns": [
+        "PersistentClient",
+        "create_collection",
+        "cosine"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Chunks, embeds, and inserts real data (Part B)",
+      "points": 12,
+      "path": "vector_store.py",
+      "patterns": [
+        "def recursive_split",
+        "embed_content",
+        "\\.add\\("
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Uses a second client instance to confirm persistence (Part C)",
+      "points": 10,
+      "path": "vector_store.py",
+      "patterns": [
+        "PersistentClient",
+        "get_collection"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Runs a real sanity query and compares distance to cosine_similarity (Part D)",
+      "points": 10,
+      "path": "vector_store.py",
+      "patterns": [
+        "RETRIEVAL_QUERY",
+        "query_embeddings",
+        "cosine_similarity"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day22_answers.md exists",
+      "points": 6,
+      "path": "day22_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (80+ words)",
+      "points": 5,
+      "path": "day22_answers.md",
+      "words": 80
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 10,
+      "path": "day22_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Pastes real counts and real distance numbers",
+      "points": 5,
+      "path": "day22_answers.md",
+      "patterns": [
+        "count",
+        "0\\.\\d"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}
