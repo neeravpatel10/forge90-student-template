@@ -1,0 +1,99 @@
+{
+  "day": "day23",
+  "pass_mark": 80,
+  "title": "Day 23: Filter your own Chroma collection",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "query_filters.py exists",
+      "points": 6,
+      "path": "query_filters.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "query_filters.py has no syntax errors",
+      "points": 6,
+      "path": "query_filters.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Filters with where using at least two operators (Part A)",
+      "points": 12,
+      "path": "query_filters.py",
+      "patterns": [
+        "where=",
+        "\\$in|\\$gt|\\$and"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Confirms n_results is a maximum on a narrow filter (Part B)",
+      "points": 10,
+      "path": "query_filters.py",
+      "patterns": [
+        "n_results",
+        "len\\("
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Uses where_document to filter real text (Part C)",
+      "points": 10,
+      "path": "query_filters.py",
+      "patterns": [
+        "where_document",
+        "\\$contains"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Runs an unfiltered-vs-filtered comparison (Part D)",
+      "points": 12,
+      "path": "query_filters.py",
+      "patterns": [
+        "query_embeddings",
+        "where="
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day23_answers.md exists",
+      "points": 6,
+      "path": "day23_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (80+ words)",
+      "points": 5,
+      "path": "day23_answers.md",
+      "words": 80
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 10,
+      "path": "day23_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Pastes real section names and real counts",
+      "points": 5,
+      "path": "day23_answers.md",
+      "patterns": [
+        "section",
+        "\\d"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}
