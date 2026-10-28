@@ -1,0 +1,88 @@
+{
+  "day": "day25",
+  "pass_mark": 80,
+  "title": "Day 25: Find your own edge case in a real, larger document set",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "semantic_search.py exists",
+      "points": 7,
+      "path": "semantic_search.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "semantic_search.py has no syntax errors",
+      "points": 7,
+      "path": "semantic_search.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Builds a combined collection from all four real documents with a source field (Part A)",
+      "points": 13,
+      "path": "semantic_search.py",
+      "patterns": [
+        "def recursive_split",
+        "source"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Runs a real query and checks the top results (Part B)",
+      "points": 10,
+      "path": "semantic_search.py",
+      "patterns": [
+        "RETRIEVAL_QUERY",
+        "query_embeddings"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Runs a real where-filtered query (Part D)",
+      "points": 10,
+      "path": "semantic_search.py",
+      "patterns": [
+        "where="
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day25_answers.md exists",
+      "points": 7,
+      "path": "day25_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (80+ words)",
+      "points": 5,
+      "path": "day25_answers.md",
+      "words": 80
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 10,
+      "path": "day25_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "States a prediction and pastes real distances/sources",
+      "points": 13,
+      "path": "day25_answers.md",
+      "patterns": [
+        "predict",
+        "0\\.\\d"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}
