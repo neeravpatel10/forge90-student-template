@@ -1,0 +1,79 @@
+{
+  "day": "day24",
+  "pass_mark": 80,
+  "title": "Day 24: Practice session, the embed-chunk-store-retrieve pipeline",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "day24_notebook.ipynb exists",
+      "points": 5,
+      "path": "day24_notebook.ipynb"
+    },
+    {
+      "type": "notebook_valid",
+      "label": "It is a real notebook with all its cells",
+      "points": 5,
+      "path": "day24_notebook.ipynb",
+      "cells": 21
+    },
+    {
+      "type": "notebook_executed",
+      "label": "You ran the cells and saved the notebook with its outputs",
+      "points": 15,
+      "path": "day24_notebook.ipynb",
+      "min_fraction": 0.9
+    },
+    {
+      "type": "notebook_no_errors",
+      "label": "No cell ended in an error",
+      "points": 10,
+      "path": "day24_notebook.ipynb"
+    },
+    {
+      "type": "notebook_outputs_contain",
+      "label": "Milestones 0, 1 and 2 printed their 'done' messages",
+      "points": 15,
+      "path": "day24_notebook.ipynb",
+      "patterns": [
+        "M0 done",
+        "M1 done",
+        "M2 done"
+      ]
+    },
+    {
+      "type": "notebook_outputs_contain",
+      "label": "Milestones 3 and 4 printed their 'done' messages",
+      "points": 10,
+      "path": "day24_notebook.ipynb",
+      "patterns": [
+        "M3 done",
+        "M4 done"
+      ]
+    },
+    {
+      "type": "notebook_outputs_contain",
+      "label": "Milestone 5 printed its 'done' message",
+      "points": 10,
+      "path": "day24_notebook.ipynb",
+      "patterns": [
+        "M5 done"
+      ]
+    },
+    {
+      "type": "notebook_text_absent",
+      "label": "Your Milestone 6 reflection replaces the TODO placeholders",
+      "points": 10,
+      "path": "day24_notebook.ipynb",
+      "patterns": [
+        "TODO: Which milestone",
+        "TODO: What would this pipeline",
+        "TODO: Did your Milestone 5"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 20
+    }
+  ]
+}
