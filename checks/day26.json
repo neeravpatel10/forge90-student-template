@@ -1,0 +1,96 @@
+{
+  "day": "day26",
+  "pass_mark": 80,
+  "title": "Day 26: Evaluate your own RAG system",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "rag_answer.py exists",
+      "points": 6,
+      "path": "rag_answer.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "rag_answer.py has no syntax errors",
+      "points": 6,
+      "path": "rag_answer.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Builds a tagged, grounded prompt and calls the model (Part A)",
+      "points": 12,
+      "path": "rag_answer.py",
+      "patterns": [
+        "def build_prompt",
+        "<context>",
+        "interactions\\.create",
+        "system_instruction"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Returns a structured RAGAnswer and verifies its citations (Part A)",
+      "points": 14,
+      "path": "rag_answer.py",
+      "patterns": [
+        "class RAGAnswer",
+        "response_format",
+        "model_validate_json",
+        "cited_ids",
+        "<="
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Compares strict and soft grounding, and sweeps top-k (Parts C and D)",
+      "points": 10,
+      "path": "rag_answer.py",
+      "patterns": [
+        "GROUNDED",
+        "SOFT",
+        "total_input_tokens"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day26_answers.md exists",
+      "points": 6,
+      "path": "day26_answers.md"
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (120+ words)",
+      "points": 5,
+      "path": "day26_answers.md",
+      "words": 120
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 10,
+      "path": "day26_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "States expectations and reports real results and token counts",
+      "points": 13,
+      "path": "day26_answers.md",
+      "patterns": [
+        "expect",
+        "(True|False)",
+        "\\d+ tokens|tokens"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}
