@@ -1,0 +1,109 @@
+{
+  "day": "day27",
+  "pass_mark": 80,
+  "title": "Day 27: A document's whole life, over a real API",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "knowledge.py and app.py exist",
+      "points": 6,
+      "path": "app.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "knowledge.py has no syntax errors",
+      "points": 4,
+      "path": "knowledge.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "app.py has no syntax errors",
+      "points": 4,
+      "path": "app.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Ingestion replaces whole documents, hashes, validates, and uses a threshold",
+      "points": 12,
+      "path": "knowledge.py",
+      "patterns": [
+        "delete\\(where=\\{\"doc_id\"",
+        "sha256",
+        "IngestError",
+        "NO_MATCH_DISTANCE",
+        "GenerationError"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "The API has /ask and /ingest with upload and deliberate status codes",
+      "points": 10,
+      "path": "app.py",
+      "patterns": [
+        "UploadFile",
+        "@app.post\\(\"/ingest\"",
+        "@app.post\\(\"/ask\"",
+        "status_code=502",
+        "status_code=415"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "run_checks.py calls the running server over HTTP",
+      "points": 10,
+      "path": "run_checks.py",
+      "patterns": [
+        "httpx2",
+        "/ingest",
+        "/ask",
+        "/documents"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day27_answers.md exists",
+      "points": 5,
+      "path": "day27_answers.md"
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 10,
+      "path": "day27_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Shows the full lifecycle: added, updated, unchanged",
+      "points": 9,
+      "path": "day27_answers.md",
+      "patterns": [
+        "added",
+        "updated",
+        "unchanged"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Shows all three answer statuses and real distances",
+      "points": 12,
+      "path": "day27_answers.md",
+      "patterns": [
+        "answered",
+        "not_in_documents",
+        "no_relevant_documents",
+        "0\\.\\d{2}"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}
