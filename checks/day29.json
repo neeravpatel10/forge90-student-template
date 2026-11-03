@@ -1,0 +1,152 @@
+{
+  "day": "day29",
+  "pass_mark": 80,
+  "title": "Day 29: Finish and extend your knowledge system",
+  "checks": [
+    {
+      "type": "py_compiles",
+      "label": "knowledge.py has no syntax errors",
+      "points": 3,
+      "path": "knowledge.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "app.py has no syntax errors",
+      "points": 3,
+      "path": "app.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "api_client.py has no syntax errors",
+      "points": 2,
+      "path": "api_client.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "chat_app.py has no syntax errors",
+      "points": 3,
+      "path": "chat_app.py"
+    },
+    {
+      "type": "file_exists",
+      "label": "check_milestones.py is in day29/",
+      "points": 2,
+      "path": "check_milestones.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "M1: /ask can return the retrieved context",
+      "points": 5,
+      "path": "app.py",
+      "patterns": [
+        "include_context",
+        "context:"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M1: the app has the toggle and the expander",
+      "points": 8,
+      "path": "chat_app.py",
+      "patterns": [
+        "Show retrieved context",
+        "st\\.toggle",
+        "st\\.expander"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M2: the API saves and summarises feedback",
+      "points": 8,
+      "path": "app.py",
+      "patterns": [
+        "@app\\.post\\(\"/feedback\"",
+        "@app\\.get\\(\"/feedback\"",
+        "feedback\\.jsonl"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M2: feedback is sent from on_change",
+      "points": 8,
+      "path": "chat_app.py",
+      "patterns": [
+        "st\\.feedback",
+        "on_change"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M3: chunks carry a category and retrieval can filter on it",
+      "points": 8,
+      "path": "knowledge.py",
+      "patterns": [
+        "CATEGORIES",
+        "\"category\"",
+        "where"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M3: uploads take a category form field; /categories exists",
+      "points": 6,
+      "path": "app.py",
+      "patterns": [
+        "Form\\(",
+        "@app\\.get\\(\"/categories\""
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M3: the client sends the category as form data and can list categories",
+      "points": 6,
+      "path": "api_client.py",
+      "patterns": [
+        "data=",
+        "include_context",
+        "def categories"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M3: the app has a Search in selectbox",
+      "points": 3,
+      "path": "chat_app.py",
+      "patterns": [
+        "Search in",
+        "st\\.selectbox"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day29_answers.md exists",
+      "points": 3,
+      "path": "day29_answers.md"
+    },
+    {
+      "type": "count_at_least",
+      "label": "check_milestones.py output pasted: M0 to M3 done",
+      "points": 10,
+      "path": "day29_answers.md",
+      "pattern": "^\\s*M[0-3] done",
+      "count": 4
+    },
+    {
+      "type": "sections",
+      "label": "Has M1, M2, M3 and Reflection",
+      "points": 4,
+      "path": "day29_answers.md",
+      "patterns": [
+        "M1",
+        "M2",
+        "M3",
+        "Reflection"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}
