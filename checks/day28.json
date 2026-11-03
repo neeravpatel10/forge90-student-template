@@ -1,0 +1,124 @@
+{
+  "day": "day28",
+  "pass_mark": 80,
+  "title": "Day 28: Your own support screen",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "chat_app.py exists",
+      "points": 4,
+      "path": "chat_app.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "chat_app.py has no syntax errors",
+      "points": 5,
+      "path": "chat_app.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "api_client.py has no syntax errors",
+      "points": 4,
+      "path": "api_client.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "test_app.py has no syntax errors",
+      "points": 5,
+      "path": "test_app.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "The chat keeps its history, uses your client, and has a Clear conversation button",
+      "points": 12,
+      "path": "chat_app.py",
+      "patterns": [
+        "import api_client",
+        "st\\.session_state",
+        "st\\.chat_input",
+        "st\\.chat_message",
+        "Clear conversation"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Each status has its own look, and uploads go through the API",
+      "points": 8,
+      "path": "chat_app.py",
+      "patterns": [
+        "st\\.warning",
+        "st\\.info",
+        "st\\.error",
+        "st\\.file_uploader",
+        "api\\.ingest"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "The client catches RequestError and raises ApiError",
+      "points": 6,
+      "path": "api_client.py",
+      "patterns": [
+        "RequestError",
+        "class ApiError",
+        "KNOWLEDGE_API_URL"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "test_app.py drives the app with AppTest, including Clear conversation",
+      "points": 10,
+      "path": "test_app.py",
+      "patterns": [
+        "AppTest",
+        "chat_input",
+        "no_relevant_documents",
+        "Clear conversation",
+        "assert"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day28_answers.md exists",
+      "points": 5,
+      "path": "day28_answers.md"
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A, B, C and D",
+      "points": 10,
+      "path": "day28_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Part A records all four outcomes",
+      "points": 8,
+      "path": "day28_answers.md",
+      "patterns": [
+        "\\banswered\\b",
+        "not_in_documents",
+        "no_relevant_documents",
+        "\\berror\\b"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part C pastes five PASS lines from test_app.py",
+      "points": 5,
+      "path": "day28_answers.md",
+      "pattern": "^\\s*PASS:",
+      "count": 5
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}
