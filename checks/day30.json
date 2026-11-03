@@ -1,0 +1,138 @@
+{
+  "day": "day30",
+  "pass_mark": 80,
+  "title": "Day 30: Harden it, then measure it",
+  "checks": [
+    {
+      "type": "py_compiles",
+      "label": "knowledge.py has no syntax errors",
+      "points": 3,
+      "path": "knowledge.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "app.py has no syntax errors",
+      "points": 3,
+      "path": "app.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "chat_app.py has no syntax errors",
+      "points": 2,
+      "path": "chat_app.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "run_eval.py has no syntax errors",
+      "points": 4,
+      "path": "run_eval.py"
+    },
+    {
+      "type": "file_exists",
+      "label": "probe.py is in day30/",
+      "points": 2,
+      "path": "probe.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "M2: the API rejects junk questions and non-UTF-8 files, and answers duplicates with 409",
+      "points": 12,
+      "path": "app.py",
+      "patterns": [
+        "field_validator",
+        "UnicodeDecodeError",
+        "status_code=409"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M2: ingestion looks for the same text under another name",
+      "points": 6,
+      "path": "knowledge.py",
+      "patterns": [
+        "where=\\{\\\"content_hash\\\"",
+        "DuplicateDocumentError"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "eval_set.json exists",
+      "points": 3,
+      "path": "eval_set.json"
+    },
+    {
+      "type": "count_at_least",
+      "label": "M3: at least 10 evaluation cases",
+      "points": 6,
+      "path": "eval_set.json",
+      "pattern": "\"expected_status\"",
+      "count": 10
+    },
+    {
+      "type": "count_at_least",
+      "label": "M3: at least 5 cases check a fact (must_contain)",
+      "points": 4,
+      "path": "eval_set.json",
+      "pattern": "\"must_contain\"",
+      "count": 5
+    },
+    {
+      "type": "contains_all",
+      "label": "M3: run_eval.py asks with context and scores status and facts, with a --k option",
+      "points": 8,
+      "path": "run_eval.py",
+      "patterns": [
+        "include_context",
+        "expected_status",
+        "must_contain",
+        "--k"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day30_answers.md exists",
+      "points": 2,
+      "path": "day30_answers.md"
+    },
+    {
+      "type": "sections",
+      "label": "Has M1, M2, M3 and M4",
+      "points": 5,
+      "path": "day30_answers.md",
+      "patterns": [
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "M2: probe output pasted with the fixes passing",
+      "points": 6,
+      "path": "day30_answers.md",
+      "pattern": "^\\s*\\[OK\\]",
+      "count": 6
+    },
+    {
+      "type": "count_at_least",
+      "label": "M3-M4: five evaluation runs pasted (totals lines)",
+      "points": 6,
+      "path": "day30_answers.md",
+      "pattern": "retrieved \\d+/\\d+",
+      "count": 5
+    },
+    {
+      "type": "min_words",
+      "label": "M5: README.md describes the project (150+ words)",
+      "points": 10,
+      "path": "README.md",
+      "words": 150
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}
