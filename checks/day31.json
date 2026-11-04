@@ -1,0 +1,116 @@
+{
+  "day": "day31",
+  "pass_mark": 80,
+  "title": "Day 31: Your own tools",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "support_tools.py exists",
+      "points": 5,
+      "path": "support_tools.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "support_tools.py has no syntax errors",
+      "points": 6,
+      "path": "support_tools.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Uses LangChain tools with a rate-limited Gemini model (Part A)",
+      "points": 10,
+      "path": "support_tools.py",
+      "patterns": [
+        "ChatGoogleGenerativeAI",
+        "InMemoryRateLimiter",
+        "@tool",
+        "bind_tools",
+        "brightcart_orders\\.json"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Defines list_customer_orders and estimate_refund with validated arguments (Part B)",
+      "points": 16,
+      "path": "support_tools.py",
+      "patterns": [
+        "def list_customer_orders",
+        "def estimate_refund",
+        "args_schema",
+        "pattern\\s*=",
+        "defective"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "At least four tools defined with @tool",
+      "points": 6,
+      "path": "support_tools.py",
+      "pattern": "^\\s*@tool",
+      "count": 4
+    },
+    {
+      "type": "contains_all",
+      "label": "Runs tool calls safely and does a full round trip (Parts A and E)",
+      "points": 12,
+      "path": "support_tools.py",
+      "patterns": [
+        "TOOLS_BY_NAME",
+        "ToolMessage",
+        "except",
+        "def ask_once"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day31_answers.md exists",
+      "points": 5,
+      "path": "day31_answers.md"
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A to Part E",
+      "points": 10,
+      "path": "day31_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D",
+        "Part E"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part C scores at least eight questions (MATCH/MISS)",
+      "points": 8,
+      "path": "day31_answers.md",
+      "pattern": "\\b(MATCH|MISS)\\b",
+      "count": 8
+    },
+    {
+      "type": "contains_all",
+      "label": "States expectations, real tool calls and a total; reports the round trip",
+      "points": 6,
+      "path": "day31_answers.md",
+      "patterns": [
+        "expect",
+        "of 8|/\\s*8",
+        "estimate_refund",
+        "tool_calls|round"
+      ]
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (200+ words)",
+      "points": 4,
+      "path": "day31_answers.md",
+      "words": 200
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 12
+    }
+  ]
+}
