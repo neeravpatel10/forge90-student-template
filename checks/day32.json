@@ -1,0 +1,124 @@
+{
+  "day": "day32",
+  "pass_mark": 80,
+  "title": "Day 32: Your own agent loop",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "support_agent.py exists",
+      "points": 5,
+      "path": "support_agent.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "support_agent.py has no syntax errors",
+      "points": 6,
+      "path": "support_agent.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Your own loop with a step limit and a fallback reply (Part A)",
+      "points": 12,
+      "path": "support_agent.py",
+      "patterns": [
+        "ChatGoogleGenerativeAI",
+        "InMemoryRateLimiter",
+        "brightcart_orders\\.json",
+        "def run_agent",
+        "max_steps",
+        "AIMessage\\(",
+        "tool_calls"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Runs the same tasks with create_agent and streams one (Part B)",
+      "points": 10,
+      "path": "support_agent.py",
+      "patterns": [
+        "create_agent\\(",
+        "system_prompt",
+        "stream_mode"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "A crashing tool fixed two ways (Part C)",
+      "points": 10,
+      "path": "support_agent.py",
+      "patterns": [
+        "tracking",
+        "except\\s+KeyError",
+        "ToolErrorMiddleware",
+        "def on_error"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Step and call limits tried on purpose (Part D)",
+      "points": 9,
+      "path": "support_agent.py",
+      "patterns": [
+        "recursion_limit",
+        "GraphRecursionError",
+        "ModelCallLimitMiddleware",
+        "def ask_limited"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Tool-call limit and claim checks (Part E)",
+      "points": 10,
+      "path": "support_agent.py",
+      "patterns": [
+        "ToolCallLimitMiddleware",
+        "def check_claims\\b",
+        "def check_claims_v2"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day32_answers.md exists",
+      "points": 4,
+      "path": "day32_answers.md"
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A to Part E",
+      "points": 8,
+      "path": "day32_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D",
+        "Part E"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Reports tokens, returns, the crash, the limits and the failure count",
+      "points": 10,
+      "path": "day32_answers.md",
+      "patterns": [
+        "tokens",
+        "RETURNS|returns? opened",
+        "KeyError",
+        "GraphRecursionError|recursion",
+        "of 5|/\\s*5"
+      ]
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (250+ words)",
+      "points": 4,
+      "path": "day32_answers.md",
+      "words": 250
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 12
+    }
+  ]
+}
