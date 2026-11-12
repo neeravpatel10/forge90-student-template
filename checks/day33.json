@@ -1,0 +1,129 @@
+{
+  "day": "day33",
+  "pass_mark": 80,
+  "title": "Day 33: Better prompts, structured outputs, your RAG as a chain",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "chains.py exists",
+      "points": 5,
+      "path": "chains.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "chains.py has no syntax errors",
+      "points": 6,
+      "path": "chains.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "A system + human template with partial and escaped braces (Part A)",
+      "points": 10,
+      "path": "chains.py",
+      "patterns": [
+        "from_messages",
+        "\\(\\s*[\"']system[\"']",
+        "\\.partial\\(",
+        "\\{\\{",
+        "InMemoryRateLimiter"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "A few-shot classifier (Part B)",
+      "points": 8,
+      "path": "chains.py",
+      "patterns": [
+        "FewShotChatMessagePromptTemplate",
+        "delivery_change",
+        "\\.batch\\("
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "PydanticOutputParser and with_structured_output compared (Part C)",
+      "points": 12,
+      "path": "chains.py",
+      "patterns": [
+        "class TicketTriage",
+        "Literal\\[",
+        "PydanticOutputParser",
+        "with_structured_output",
+        "return_exceptions\\s*=\\s*True",
+        "include_raw\\s*=\\s*True"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "The RAG chain over the knowledge base, with a no-match guard (Part D)",
+      "points": 12,
+      "path": "chains.py",
+      "patterns": [
+        "chromadb",
+        "def retrieve",
+        "RunnablePassthrough",
+        "RunnableLambda",
+        "class RAGAnswer",
+        "0\\.4"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "A history slot (Part E)",
+      "points": 5,
+      "path": "chains.py",
+      "patterns": [
+        "MessagesPlaceholder",
+        "AIMessage",
+        "BC-2001"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day33_answers.md exists",
+      "points": 5,
+      "path": "day33_answers.md"
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A to Part E",
+      "points": 10,
+      "path": "day33_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D",
+        "Part E"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part C reports failure counts out of 8 (at least four)",
+      "points": 5,
+      "path": "day33_answers.md",
+      "pattern": "\\d\\s*/\\s*8",
+      "count": 4
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part D's table scores the questions (PASS/FAIL, at least 12)",
+      "points": 6,
+      "path": "day33_answers.md",
+      "pattern": "\\b(PASS|FAIL)\\b",
+      "count": 12
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (250+ words)",
+      "points": 4,
+      "path": "day33_answers.md",
+      "words": 250
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 12
+    }
+  ]
+}
