@@ -1,91 +1,78 @@
 {
   "day": "day32",
   "pass_mark": 80,
-  "title": "Day 32: Your own agent loop",
+  "title": "Day 32: A ticket-triage chain",
   "checks": [
     {
       "type": "file_exists",
-      "label": "support_agent.py exists",
+      "label": "triage.py exists",
       "points": 5,
-      "path": "support_agent.py"
+      "path": "triage.py"
     },
     {
       "type": "py_compiles",
-      "label": "support_agent.py has no syntax errors",
+      "label": "triage.py has no syntax errors",
       "points": 6,
-      "path": "support_agent.py"
+      "path": "triage.py"
     },
     {
       "type": "contains_all",
-      "label": "Your own loop with a step limit and a fallback reply (Part A)",
-      "points": 12,
-      "path": "support_agent.py",
+      "label": "Builds prompt | model | parser chains with a rate-limited Gemini model (Part A)",
+      "points": 14,
+      "path": "triage.py",
       "patterns": [
         "ChatGoogleGenerativeAI",
         "InMemoryRateLimiter",
-        "brightcart_orders\\.json",
-        "def run_agent",
-        "max_steps",
-        "AIMessage\\(",
-        "tool_calls"
+        "ChatPromptTemplate",
+        "StrOutputParser",
+        "\\|\\s*llm",
+        "brightcart_tickets\\.json"
       ]
     },
     {
       "type": "contains_all",
-      "label": "Runs the same tasks with create_agent and streams one (Part B)",
+      "label": "Times batch against a loop (Part B)",
       "points": 10,
-      "path": "support_agent.py",
+      "path": "triage.py",
       "patterns": [
-        "create_agent\\(",
-        "system_prompt",
-        "stream_mode"
+        "\\.batch\\(",
+        "max_concurrency",
+        "perf_counter|time\\.time\\("
       ]
     },
     {
       "type": "contains_all",
-      "label": "A crashing tool fixed two ways (Part C)",
+      "label": "Runs branches with RunnableParallel and a burst limiter (Part C)",
       "points": 10,
-      "path": "support_agent.py",
+      "path": "triage.py",
       "patterns": [
-        "tracking",
-        "except\\s+KeyError",
-        "ToolErrorMiddleware",
-        "def on_error"
+        "RunnableParallel",
+        "max_bucket_size"
       ]
     },
     {
       "type": "contains_all",
-      "label": "Step and call limits tried on purpose (Part D)",
-      "points": 9,
-      "path": "support_agent.py",
+      "label": "Builds the triage chain with assign, an order lookup and return_exceptions (Part D)",
+      "points": 12,
+      "path": "triage.py",
       "patterns": [
-        "recursion_limit",
-        "GraphRecursionError",
-        "ModelCallLimitMiddleware",
-        "def ask_limited"
-      ]
-    },
-    {
-      "type": "contains_all",
-      "label": "Tool-call limit and claim checks (Part E)",
-      "points": 10,
-      "path": "support_agent.py",
-      "patterns": [
-        "ToolCallLimitMiddleware",
-        "def check_claims\\b",
-        "def check_claims_v2"
+        "RunnablePassthrough",
+        "\\.assign\\(",
+        "def look_up_order",
+        "needs_human",
+        "return_exceptions\\s*=\\s*True"
       ]
     },
     {
       "type": "file_exists",
       "label": "day32_answers.md exists",
-      "points": 4,
+      "points": 5,
       "path": "day32_answers.md"
     },
     {
       "type": "sections",
       "label": "Has Part A to Part E",
-      "points": 8,
+      "points": 10,
       "path": "day32_answers.md",
       "patterns": [
         "Part A",
@@ -96,24 +83,27 @@
       ]
     },
     {
-      "type": "contains_all",
-      "label": "Reports tokens, returns, the crash, the limits and the failure count",
-      "points": 10,
+      "type": "count_at_least",
+      "label": "Reports at least five measured times in seconds (Parts B and C)",
+      "points": 6,
       "path": "day32_answers.md",
-      "patterns": [
-        "tokens",
-        "RETURNS|returns? opened",
-        "KeyError",
-        "GraphRecursionError|recursion",
-        "of 5|/\\s*5"
-      ]
+      "pattern": "\\d+(\\.\\d+)?\\s*(s|sec|seconds)\\b",
+      "count": 5
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part D's table covers all eight tickets",
+      "points": 6,
+      "path": "day32_answers.md",
+      "pattern": "T-50[1-8]",
+      "count": 8
     },
     {
       "type": "min_words",
-      "label": "Answers are a reasonable length (250+ words)",
+      "label": "Answers are a reasonable length (200+ words)",
       "points": 4,
       "path": "day32_answers.md",
-      "words": 250
+      "words": 200
     },
     {
       "type": "no_secrets",
