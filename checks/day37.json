@@ -1,0 +1,139 @@
+{
+  "day": "day37",
+  "pass_mark": 80,
+  "title": "Day 37: Scores with evidence, and a LaTeX resume (Scout v3)",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "scout_v3.py exists",
+      "points": 5,
+      "path": "scout_v3.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "scout_v3.py has no syntax errors",
+      "points": 6,
+      "path": "scout_v3.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "The ATSScore contract and a structured scorer (Part A)",
+      "points": 8,
+      "path": "scout_v3.py",
+      "patterns": [
+        "class MustHave",
+        "class ATSScore",
+        "Field\\(\\s*ge\\s*=\\s*0\\s*,\\s*le\\s*=\\s*100\\s*\\)",
+        "with_structured_output",
+        "InMemoryRateLimiter"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "One role scored in one batch, duplicates handled (Part A)",
+      "points": 8,
+      "path": "scout_v3.py",
+      "patterns": [
+        "\\.batch\\(",
+        "return_exceptions\\s*=\\s*True",
+        "def latest_applications"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Evidence checked and the ranking done in code (Part B)",
+      "points": 10,
+      "path": "scout_v3.py",
+      "patterns": [
+        "def check_evidence",
+        "def norm",
+        "def rank",
+        "eligible",
+        "notice_days"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "latex_resume.py exists",
+      "points": 4,
+      "path": "latex_resume.py"
+    },
+    {
+      "type": "py_runs",
+      "label": "latex_resume.py runs and its asserts pass (no API key needed)",
+      "points": 10,
+      "path": "latex_resume.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Escaping for all 10 characters, ResumeData and build_tex (Part C)",
+      "points": 10,
+      "path": "latex_resume.py",
+      "patterns": [
+        "def latex_escape",
+        "textbackslash",
+        "textasciitilde",
+        "textasciicircum",
+        "class ResumeData",
+        "def build_tex",
+        "assert "
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "shortlist_resume.tex exists (Part D)",
+      "points": 4,
+      "path": "shortlist_resume.tex"
+    },
+    {
+      "type": "contains_all",
+      "label": "shortlist_resume.tex is a whole LaTeX document",
+      "points": 5,
+      "path": "shortlist_resume.tex",
+      "patterns": [
+        "\\\\documentclass",
+        "\\\\begin\\{document\\}",
+        "\\\\section",
+        "\\\\end\\{document\\}"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day37_answers.md exists",
+      "points": 4,
+      "path": "day37_answers.md"
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A to Part D",
+      "points": 8,
+      "path": "day37_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part B records what the check did with each attack (CAUGHT or PASSED, at least 4)",
+      "points": 4,
+      "path": "day37_answers.md",
+      "pattern": "\\b(CAUGHT|PASSED)\\b",
+      "count": 4
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (250+ words)",
+      "points": 3,
+      "path": "day37_answers.md",
+      "words": 250
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 11
+    }
+  ]
+}

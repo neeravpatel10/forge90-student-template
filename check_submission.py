@@ -94,8 +94,12 @@ def scan_for_secrets(repo: Path) -> list[str]:
     tracked = git(repo, "ls-files")
     if tracked is not None:
         for name in tracked.splitlines():
-            if Path(name).name == ".env" or name.endswith(".env"):
+            base = Path(name).name
+            if base == ".env" or name.endswith(".env"):
                 problems.append(f"{name}: a .env file is tracked by git (it must be in .gitignore)")
+            elif base in ("token.json", "credentials.json") or (base.startswith("client_secret") and base.endswith(".json")):
+                problems.append(f"{name}: a Google OAuth file is tracked by git (it gives access to your Gmail: "
+                                "delete it from the repo, add it to .gitignore, and revoke it in your Google account)")
 
     history = git(repo, "log", "--all", "-p", "--no-color", timeout=45)
     if history and GOOGLE_KEY.search(history):

@@ -1,0 +1,123 @@
+{
+  "day": "day36",
+  "pass_mark": 80,
+  "title": "Day 36: Scout v2, PDFs, the handbook search and a read-only Gmail intake",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "scout_v2.py exists",
+      "points": 5,
+      "path": "scout_v2.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "scout_v2.py has no syntax errors",
+      "points": 6,
+      "path": "scout_v2.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "The PDF-aware read_application (Scout v2)",
+      "points": 8,
+      "path": "scout_v2.py",
+      "patterns": [
+        "PdfReader",
+        "extract_text",
+        "@tool\\(\\s*[\"']read_application[\"']\\s*\\)"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "A read-only, tag-filtered Gmail tool (Part A)",
+      "points": 12,
+      "path": "scout_v2.py",
+      "patterns": [
+        "gmail\\.readonly",
+        "TT-APPLY",
+        "def build_query",
+        "includeSpamTrash\\s*=\\s*False",
+        "def fetch_applications",
+        "messages\\(\\)\\.list\\("
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Widening attempts are refused in code (Part B)",
+      "points": 6,
+      "path": "scout_v2.py",
+      "patterns": [
+        "ValueError|Refused",
+        "in:"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "The handbook search, the chain and the agent (Part C)",
+      "points": 10,
+      "path": "scout_v2.py",
+      "patterns": [
+        "chromadb",
+        "search_handbook",
+        "RunnablePassthrough",
+        "create_agent",
+        "SYSTEM_V2"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "The scorer over the answer key (Part D)",
+      "points": 5,
+      "path": "scout_v2.py",
+      "patterns": [
+        "def score",
+        "answer_key"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day36_answers.md exists",
+      "points": 5,
+      "path": "day36_answers.md"
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A to Part D",
+      "points": 10,
+      "path": "day36_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part B records the queries that were sent (at least four)",
+      "points": 8,
+      "path": "day36_answers.md",
+      "pattern": "subject:\\s*\"?\\[TT-APPLY\\]",
+      "count": 4
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part D scores all 14 tasks (PASS/FAIL, at least 14)",
+      "points": 6,
+      "path": "day36_answers.md",
+      "pattern": "\\b(PASS|FAIL)\\b",
+      "count": 14
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (300+ words)",
+      "points": 4,
+      "path": "day36_answers.md",
+      "words": 300
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 15
+    }
+  ]
+}

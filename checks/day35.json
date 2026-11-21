@@ -1,0 +1,125 @@
+{
+  "day": "day35",
+  "pass_mark": 80,
+  "title": "Day 35: Scout remembers (two managers, a token budget, a privacy test, a score)",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "scout_v1.py exists",
+      "points": 5,
+      "path": "scout_v1.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "scout_v1.py has no syntax errors",
+      "points": 6,
+      "path": "scout_v1.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "Two managers, one store, two namespaces (Part A)",
+      "points": 12,
+      "path": "scout_v1.py",
+      "patterns": [
+        "InMemorySaver",
+        "InMemoryStore",
+        "context_schema",
+        "ToolRuntime",
+        "[\"']ananya[\"']",
+        "[\"']farhan[\"']"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "A trimmer that cuts at a user message, with token counts (Part B)",
+      "points": 10,
+      "path": "scout_v1.py",
+      "patterns": [
+        "@before_model",
+        "RemoveMessage",
+        "REMOVE_ALL_MESSAGES",
+        "count_tokens_approximately",
+        "usage_metadata",
+        "[\"']human[\"']"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "The PII pattern and the refusing remember tool (Part C)",
+      "points": 8,
+      "path": "scout_v1.py",
+      "patterns": [
+        "PII\\s*=\\s*re\\.compile",
+        "def remember",
+        "PII\\.search",
+        "Not saved"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "The answer-key loop with the scorer (Part D)",
+      "points": 10,
+      "path": "scout_v1.py",
+      "patterns": [
+        "answer_key\\.jsonl",
+        "def score",
+        "NEW_THREAD",
+        "InMemoryRateLimiter"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day35_answers.md exists",
+      "points": 5,
+      "path": "day35_answers.md"
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A to Part D",
+      "points": 10,
+      "path": "day35_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part B reports real token counts (at least four)",
+      "points": 6,
+      "path": "day35_answers.md",
+      "pattern": "\\b\\d[\\d,]{2,}\\b",
+      "count": 4
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part D's table scores the tasks (PASS/FAIL, at least 14)",
+      "points": 8,
+      "path": "day35_answers.md",
+      "pattern": "\\b(PASS|FAIL)\\b",
+      "count": 14
+    },
+    {
+      "type": "count_at_least",
+      "label": "Part D states a score out of 14",
+      "points": 4,
+      "path": "day35_answers.md",
+      "pattern": "\\b\\d{1,2}\\s*/\\s*14\\b",
+      "count": 1
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (300+ words)",
+      "points": 4,
+      "path": "day35_answers.md",
+      "words": 300
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 12
+    }
+  ]
+}

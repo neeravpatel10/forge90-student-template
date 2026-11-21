@@ -1,0 +1,161 @@
+{
+  "day": "day40",
+  "pass_mark": 80,
+  "title": "Day 40: Checkpoint 2 build day (Resume Intelligence Suite)",
+  "checks": [
+    {
+      "type": "py_compiles",
+      "label": "suite.py has no syntax errors",
+      "points": 1,
+      "path": "suite.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "intake.py has no syntax errors",
+      "points": 1,
+      "path": "intake.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "store.py has no syntax errors",
+      "points": 1,
+      "path": "store.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "scoring.py has no syntax errors",
+      "points": 1,
+      "path": "scoring.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "builder.py has no syntax errors",
+      "points": 1,
+      "path": "builder.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "guardrails.py has no syntax errors",
+      "points": 1,
+      "path": "guardrails.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "scout.py has no syntax errors",
+      "points": 1,
+      "path": "scout.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "M1: intake is read-only, tag-filtered and remembers what it has seen",
+      "points": 3,
+      "path": "intake.py",
+      "patterns": [
+        "gmail\\.readonly",
+        "\\[TT-APPLY\\]",
+        "def check_inbox",
+        "seen"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M2: resumes go into a Chroma store",
+      "points": 2,
+      "path": "store.py",
+      "patterns": [
+        "chromadb",
+        "PersistentClient"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M2-M3: ATSScore, the evidence check and a ranking in code",
+      "points": 3,
+      "path": "scoring.py",
+      "patterns": [
+        "class ATSScore",
+        "def check_evidence",
+        "def rank",
+        "notice_days"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M4: the LaTeX builder escapes the special characters",
+      "points": 3,
+      "path": "builder.py",
+      "patterns": [
+        "def latex_escape",
+        "class ResumeData",
+        "def build_tex",
+        "textbackslash"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M5: the guardrails: approval, PII, call limits, the outbox",
+      "points": 4,
+      "path": "guardrails.py",
+      "patterns": [
+        "HumanInTheLoopMiddleware",
+        "PIIMiddleware",
+        "ModelCallLimitMiddleware",
+        "ToolCallLimitMiddleware",
+        "def send_email",
+        "outbox"
+      ]
+    },
+    {
+      "type": "py_runs",
+      "label": "M1-M5: test_offline.py runs and every milestone passes (no model call)",
+      "points": 30,
+      "path": "test_offline.py",
+      "timeout": 180
+    },
+    {
+      "type": "contains_all",
+      "label": "day40/.gitignore keeps secrets and run files out of git",
+      "points": 5,
+      "path": ".gitignore",
+      "patterns": [
+        "token\\.json",
+        "credentials\\.json",
+        "outbox",
+        "chroma_db"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "demo_log.md exists",
+      "points": 2,
+      "path": "demo_log.md"
+    },
+    {
+      "type": "contains_all",
+      "label": "M1-M5: the rehearsal is pasted (inbox twice, top 3, .tex, rejected and approved email)",
+      "points": 18,
+      "path": "demo_log.md",
+      "patterns": [
+        "new application",
+        "0 new application",
+        "Data Analyst: top",
+        "\\.tex",
+        "-> rejected",
+        "-> approved",
+        "outbox: \\d+ -> \\d+"
+      ]
+    },
+    {
+      "type": "min_words",
+      "label": "README.md explains the suite (250+ words)",
+      "points": 8,
+      "path": "README.md",
+      "words": 250
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 15
+    }
+  ]
+}

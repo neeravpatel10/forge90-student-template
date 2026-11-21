@@ -1,0 +1,116 @@
+{
+  "day": "day38",
+  "pass_mark": 80,
+  "title": "Day 38: Make Scout better",
+  "checks": [
+    {
+      "type": "py_compiles",
+      "label": "scout.py has no syntax errors",
+      "points": 6,
+      "path": "scout.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "M0: scout.py is your Scout v3 with build_scout() and Context",
+      "points": 10,
+      "path": "scout.py",
+      "patterns": [
+        "def build_scout",
+        "class Context",
+        "create_agent\\(",
+        "ATSScore",
+        "def check_evidence"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "eval_scout.py and tool_choice.jsonl are in day38/",
+      "points": 2,
+      "path": "eval_scout.py"
+    },
+    {
+      "type": "file_exists",
+      "label": "tool_choice.jsonl is in day38/",
+      "points": 2,
+      "path": "tool_choice.jsonl"
+    },
+    {
+      "type": "count_at_least",
+      "label": "M0: the answer key was run (results/key_v3.json has 14 results)",
+      "points": 10,
+      "path": "results/key_v3.json",
+      "pattern": "\"result\": \"(PASS|FAIL)\"",
+      "count": 14
+    },
+    {
+      "type": "count_at_least",
+      "label": "M1: the tool-choice check was run (results/tools_v3.json has 8 results)",
+      "points": 8,
+      "path": "results/tools_v3.json",
+      "pattern": "\"result\": \"(PASS|FAIL)\"",
+      "count": 8
+    },
+    {
+      "type": "file_exists",
+      "label": "day38_answers.md exists",
+      "points": 2,
+      "path": "day38_answers.md"
+    },
+    {
+      "type": "sections",
+      "label": "day38_answers.md has M0, M1 and M2",
+      "points": 6,
+      "path": "day38_answers.md",
+      "patterns": [
+        "^#+.*M0",
+        "^#+.*M1",
+        "^#+.*M2"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M0-M1: the scores are written down (x/14 and x/8)",
+      "points": 6,
+      "path": "day38_answers.md",
+      "patterns": [
+        "\\b\\d{1,2}\\s*/\\s*14\\b",
+        "\\b\\d\\s*/\\s*8\\b"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "M2: one change, measured before and after (the compare output is pasted)",
+      "points": 12,
+      "path": "day38_answers.md",
+      "patterns": [
+        "before",
+        "after",
+        "total \\d+/\\d+ -> \\d+/\\d+"
+      ]
+    },
+    {
+      "type": "min_words",
+      "label": "M3: README.md describes your Scout (200+ words)",
+      "points": 10,
+      "path": "README.md",
+      "words": 200
+    },
+    {
+      "type": "contains_all",
+      "label": "M3: the README has the versions and scores, the tools, and how to run it",
+      "points": 8,
+      "path": "README.md",
+      "patterns": [
+        "v3",
+        "\\d{1,2}\\s*/\\s*14\\b",
+        "rank|score",
+        "eval_scout\\.py"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 18
+    }
+  ]
+}

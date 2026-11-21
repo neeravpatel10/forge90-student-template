@@ -1,0 +1,132 @@
+{
+  "day": "day39",
+  "pass_mark": 80,
+  "title": "Day 39: Guardrails for Scout (v4)",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "scout_v4.py exists",
+      "points": 5,
+      "path": "scout_v4.py"
+    },
+    {
+      "type": "py_compiles",
+      "label": "scout_v4.py has no syntax errors",
+      "points": 6,
+      "path": "scout_v4.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "A least-privilege send_email that writes to outbox/ and checks its arguments (Part A)",
+      "points": 10,
+      "path": "scout_v4.py",
+      "patterns": [
+        "def send_email",
+        "outbox",
+        "Literal\\[",
+        "fullmatch|re\\.match",
+        "def gmail_query"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "An approval flow: interrupt, approve and reject, resumed with Command (Part B)",
+      "points": 12,
+      "path": "scout_v4.py",
+      "patterns": [
+        "HumanInTheLoopMiddleware",
+        "interrupt_on",
+        "InMemorySaver|checkpointer",
+        "Command\\(\\s*resume",
+        "[\"']approve[\"']",
+        "[\"']reject[\"']"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Untrusted input stripped, wrapped as data, HR-07 (Part C)",
+      "points": 10,
+      "path": "scout_v4.py",
+      "patterns": [
+        "<application",
+        "HR-07",
+        "<!--"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "PII redaction with a custom phone detector (Part D)",
+      "points": 10,
+      "path": "scout_v4.py",
+      "patterns": [
+        "PIIMiddleware",
+        "apply_to_output",
+        "detector"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Day 34's limits and the answer-key score (Part E)",
+      "points": 8,
+      "path": "scout_v4.py",
+      "patterns": [
+        "ModelCallLimitMiddleware",
+        "ToolCallLimitMiddleware",
+        "answer_key\\.jsonl"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "day39_answers.md exists",
+      "points": 4,
+      "path": "day39_answers.md"
+    },
+    {
+      "type": "sections",
+      "label": "Has Part A to Part E",
+      "points": 8,
+      "path": "day39_answers.md",
+      "patterns": [
+        "Part A",
+        "Part B",
+        "Part C",
+        "Part D",
+        "Part E"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Reports the outbox, both decisions, a redaction and the score",
+      "points": 7,
+      "path": "day39_answers.md",
+      "patterns": [
+        "outbox",
+        "approve",
+        "reject",
+        "REDACTED",
+        "/\\s*14"
+      ]
+    },
+    {
+      "type": "min_words",
+      "label": "Answers are a reasonable length (300+ words)",
+      "points": 4,
+      "path": "day39_answers.md",
+      "words": 300
+    },
+    {
+      "type": "contains_all",
+      "label": "outbox/ is in your repo's .gitignore",
+      "points": 4,
+      "path": "../.gitignore",
+      "patterns": [
+        "outbox"
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 12
+    }
+  ]
+}
