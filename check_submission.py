@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -194,8 +195,11 @@ def run_check(check: dict, ctx: dict):
 
     if kind == "py_runs":
         try:
+            # keys blanked: load_dotenv() never overrides an existing variable, so a student script run
+            # here cannot pick up the instructor's .env from a parent folder (these checks are offline)
             done = subprocess.run([sys.executable, path.name], cwd=path.parent, capture_output=True,
-                                  text=True, errors="replace", timeout=check.get("timeout", 30))
+                                  text=True, errors="replace", timeout=check.get("timeout", 30),
+                                  env={**os.environ, "GEMINI_API_KEY": "", "GOOGLE_API_KEY": ""})
         except subprocess.TimeoutExpired:
             return 0.0, "took too long to run"
         tail = (done.stderr or done.stdout).strip().splitlines()[-1:] or [""]
