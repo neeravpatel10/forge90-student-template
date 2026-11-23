@@ -11,7 +11,7 @@
     },
     {
       "type": "contains_all",
-      "label": "M0: scout.py is your Scout v3 with build_scout() and Context",
+      "label": "M0: scout.py is your Scout v3 (mailbox reader, PDF and Word) with build_scout() and Context",
       "points": 10,
       "path": "scout.py",
       "patterns": [
@@ -19,7 +19,9 @@
         "class Context",
         "create_agent\\(",
         "ATSScore",
-        "def check_evidence"
+        "def check_evidence",
+        "MAILBOX|mailbox",
+        "docx"
       ]
     },
     {

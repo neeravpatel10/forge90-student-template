@@ -18,7 +18,7 @@
     {
       "type": "contains_all",
       "label": "The ATSScore contract and a structured scorer (Part A)",
-      "points": 8,
+      "points": 6,
       "path": "scout_v3.py",
       "patterns": [
         "class MustHave",
@@ -31,12 +31,22 @@
     {
       "type": "contains_all",
       "label": "One role scored in one batch, duplicates handled (Part A)",
-      "points": 8,
+      "points": 6,
       "path": "scout_v3.py",
       "patterns": [
         "\\.batch\\(",
         "return_exceptions\\s*=\\s*True",
         "def latest_applications"
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "Reads the attached resumes: PDF and Word (Part A)",
+      "points": 4,
+      "path": "scout_v3.py",
+      "patterns": [
+        "PdfReader",
+        "Document\\("
       ]
     },
     {

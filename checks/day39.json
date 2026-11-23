@@ -44,13 +44,14 @@
     },
     {
       "type": "contains_all",
-      "label": "Untrusted input stripped, wrapped as data, HR-07 (Part C)",
+      "label": "A Word reader that drops hidden and white text; text wrapped as data, HR-07 (Part C)",
       "points": 10,
       "path": "scout_v4.py",
       "patterns": [
+        "\\.hidden",
+        "RGBColor|FFFFFF",
         "<application",
-        "HR-07",
-        "<!--"
+        "HR-07"
       ]
     },
     {
