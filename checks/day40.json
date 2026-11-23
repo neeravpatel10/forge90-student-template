@@ -46,6 +46,12 @@
       "path": "scout.py"
     },
     {
+      "type": "py_compiles",
+      "label": "reader.py has no syntax errors",
+      "points": 1,
+      "path": "reader.py"
+    },
+    {
       "type": "contains_all",
       "label": "M1: intake is read-only, tag-filtered and remembers what it has seen",
       "points": 3,
@@ -106,9 +112,20 @@
       ]
     },
     {
+      "type": "contains_all",
+      "label": "M6: the reader reads Word tables, drops invisible text and refuses what it can't read",
+      "points": 3,
+      "path": "reader.py",
+      "patterns": [
+        "\\.rows|iter_inner_content",
+        "\\.hidden",
+        "raise Unreadable\\("
+      ]
+    },
+    {
       "type": "py_runs",
-      "label": "M1-M5: test_offline.py runs and every milestone passes (no model call)",
-      "points": 30,
+      "label": "M1-M6: test_offline.py runs and every milestone passes (no model call)",
+      "points": 28,
       "path": "test_offline.py",
       "timeout": 180
     },
@@ -132,8 +149,8 @@
     },
     {
       "type": "contains_all",
-      "label": "M1-M5: the rehearsal is pasted (inbox twice, top 3, .tex, rejected and approved email)",
-      "points": 18,
+      "label": "M1-M6: the rehearsal is pasted (inbox twice, top 3, the late ones, .tex, rejected and approved email)",
+      "points": 16,
       "path": "demo_log.md",
       "patterns": [
         "new application",
@@ -142,7 +159,9 @@
         "\\.tex",
         "-> rejected",
         "-> approved",
-        "outbox: \\d+ -> \\d+"
+        "outbox: \\d+ -> \\d+",
+        "needs a human",
+        "resend"
       ]
     },
     {

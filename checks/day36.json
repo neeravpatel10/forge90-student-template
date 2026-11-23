@@ -1,7 +1,7 @@
 {
   "day": "day36",
   "pass_mark": 80,
-  "title": "Day 36: Scout v2, PDFs, the handbook search and a read-only Gmail intake",
+  "title": "Day 36: Scout v2, PDF and Word attachments, the handbook search and a read-only Gmail intake",
   "checks": [
     {
       "type": "file_exists",
@@ -17,18 +17,20 @@
     },
     {
       "type": "contains_all",
-      "label": "The PDF-aware read_application (Scout v2)",
+      "label": "The attachment reader: PDF and Word, under the old tool name (Scout v2)",
       "points": 8,
       "path": "scout_v2.py",
       "patterns": [
         "PdfReader",
         "extract_text",
+        "docx",
+        "def resume_text",
         "@tool\\(\\s*[\"']read_application[\"']\\s*\\)"
       ]
     },
     {
       "type": "contains_all",
-      "label": "A read-only, tag-filtered Gmail tool (Part A)",
+      "label": "A read-only, tag-filtered Gmail tool that saves PDF and Word attachments (Part A)",
       "points": 12,
       "path": "scout_v2.py",
       "patterns": [
@@ -37,7 +39,8 @@
         "def build_query",
         "includeSpamTrash\\s*=\\s*False",
         "def fetch_applications",
-        "messages\\(\\)\\.list\\("
+        "messages\\(\\)\\.list\\(",
+        "attachments\\(\\)\\.get\\("
       ]
     },
     {
