@@ -254,10 +254,10 @@ def check_day(repo: Path, day: str, specs_dir: Path, secrets: list[str] | None =
     spec = load_spec(specs_dir, day)
     if spec is None:
         return {"day": day, "status": "NO SPEC", "score": 0, "max": 0, "items": [], "secrets": [], "title": day}
-    day_dir = repo / day
+    day_dir = repo / spec.get("folder", day)    # a spec may name another folder (day40, day47: checkpoint2/)
     if secrets is None:
         secrets = scan_for_secrets(repo)
-    result = {"day": day, "title": spec.get("title", day), "pass_mark": spec.get("pass_mark", 80),
+    result = {"day": day, "folder": day_dir.name, "title": spec.get("title", day), "pass_mark": spec.get("pass_mark", 80),
               "secrets": secrets, "items": [], "score": 0.0, "max": sum(c["points"] for c in spec["checks"])}
     if not day_dir.is_dir() or not any(p.is_file() and p.name != ".gitkeep" for p in day_dir.rglob("*")):
         result.update(status="NOT SUBMITTED")
@@ -289,7 +289,7 @@ def print_report(r: dict) -> None:
         print(f"No checklist found for {r['day']}. Make sure you have the latest checks/ folder.")
         return
     if r["status"] == "NOT SUBMITTED":
-        print(f"Nothing found in {r['day']}/ yet. Put this day's files there, then run this again.")
+        print(f"Nothing found in {r.get('folder', r['day'])}/ yet. Put this day's files there, then run this again.")
         return
     for item in r["items"]:
         mark = "ok " if item["ok"] else "-- "

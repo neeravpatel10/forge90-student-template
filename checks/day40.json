@@ -1,180 +1,103 @@
 {
   "day": "day40",
+  "folder": "checkpoint2",
   "pass_mark": 80,
-  "title": "Day 40: Checkpoint 2 build day (Resume Intelligence Suite)",
+  "title": "Day 40: Checkpoint 2 part 1, the plan (checkpoint2/PLAN.md)",
   "checks": [
     {
-      "type": "py_compiles",
-      "label": "suite.py has no syntax errors",
-      "points": 1,
-      "path": "suite.py"
-    },
-    {
-      "type": "py_compiles",
-      "label": "intake.py has no syntax errors",
-      "points": 1,
-      "path": "intake.py"
-    },
-    {
-      "type": "py_compiles",
-      "label": "store.py has no syntax errors",
-      "points": 1,
-      "path": "store.py"
-    },
-    {
-      "type": "py_compiles",
-      "label": "scoring.py has no syntax errors",
-      "points": 1,
-      "path": "scoring.py"
-    },
-    {
-      "type": "py_compiles",
-      "label": "builder.py has no syntax errors",
-      "points": 1,
-      "path": "builder.py"
-    },
-    {
-      "type": "py_compiles",
-      "label": "guardrails.py has no syntax errors",
-      "points": 1,
-      "path": "guardrails.py"
-    },
-    {
-      "type": "py_compiles",
-      "label": "scout.py has no syntax errors",
-      "points": 1,
-      "path": "scout.py"
-    },
-    {
-      "type": "py_compiles",
-      "label": "reader.py has no syntax errors",
-      "points": 1,
-      "path": "reader.py"
-    },
-    {
-      "type": "contains_all",
-      "label": "M1: intake is read-only, tag-filtered and remembers what it has seen",
-      "points": 3,
-      "path": "intake.py",
-      "patterns": [
-        "gmail\\.readonly",
-        "\\[TT-APPLY\\]",
-        "def check_inbox",
-        "seen"
-      ]
-    },
-    {
-      "type": "contains_all",
-      "label": "M2: resumes go into a Chroma store",
-      "points": 2,
-      "path": "store.py",
-      "patterns": [
-        "chromadb",
-        "PersistentClient"
-      ]
-    },
-    {
-      "type": "contains_all",
-      "label": "M2-M3: ATSScore, the evidence check and a ranking in code",
-      "points": 3,
-      "path": "scoring.py",
-      "patterns": [
-        "class ATSScore",
-        "def check_evidence",
-        "def rank",
-        "notice_days"
-      ]
-    },
-    {
-      "type": "contains_all",
-      "label": "M4: the LaTeX builder escapes the special characters",
-      "points": 3,
-      "path": "builder.py",
-      "patterns": [
-        "def latex_escape",
-        "class ResumeData",
-        "def build_tex",
-        "textbackslash"
-      ]
-    },
-    {
-      "type": "contains_all",
-      "label": "M5: the guardrails: approval, PII, call limits, the outbox",
-      "points": 4,
-      "path": "guardrails.py",
-      "patterns": [
-        "HumanInTheLoopMiddleware",
-        "PIIMiddleware",
-        "ModelCallLimitMiddleware",
-        "ToolCallLimitMiddleware",
-        "def send_email",
-        "outbox"
-      ]
-    },
-    {
-      "type": "contains_all",
-      "label": "M6: the reader reads Word tables, drops invisible text and refuses what it can't read",
-      "points": 3,
-      "path": "reader.py",
-      "patterns": [
-        "\\.rows|iter_inner_content",
-        "\\.hidden",
-        "raise Unreadable\\("
-      ]
-    },
-    {
-      "type": "py_runs",
-      "label": "M1-M6: test_offline.py runs and every milestone passes (no model call)",
-      "points": 28,
-      "path": "test_offline.py",
-      "timeout": 180
-    },
-    {
-      "type": "contains_all",
-      "label": "day40/.gitignore keeps secrets and run files out of git",
-      "points": 5,
-      "path": ".gitignore",
-      "patterns": [
-        "token\\.json",
-        "credentials\\.json",
-        "outbox",
-        "chroma_db"
-      ]
-    },
-    {
       "type": "file_exists",
-      "label": "demo_log.md exists",
-      "points": 2,
-      "path": "demo_log.md"
-    },
-    {
-      "type": "contains_all",
-      "label": "M1-M6: the rehearsal is pasted (inbox twice, top 3, the late ones, .tex, rejected and approved email)",
-      "points": 16,
-      "path": "demo_log.md",
-      "patterns": [
-        "new application",
-        "0 new application",
-        "Data Analyst: top",
-        "\\.tex",
-        "-> rejected",
-        "-> approved",
-        "outbox: \\d+ -> \\d+",
-        "needs a human",
-        "resend"
-      ]
+      "label": "checkpoint2/PLAN.md exists",
+      "points": 5,
+      "path": "PLAN.md"
     },
     {
       "type": "min_words",
-      "label": "README.md explains the suite (250+ words)",
-      "points": 8,
-      "path": "README.md",
-      "words": 250
+      "label": "PLAN.md is a real plan (400+ words)",
+      "points": 10,
+      "path": "PLAN.md",
+      "words": 400
+    },
+    {
+      "type": "sections",
+      "label": "PLAN.md has the 9 template headings",
+      "points": 20,
+      "path": "PLAN.md",
+      "patterns": [
+        "^##\\s*1\\.\\s*Use case",
+        "^##\\s*2\\.\\s*Users",
+        "^##\\s*3\\.\\s*Data",
+        "^##\\s*4\\.\\s*Tools",
+        "^##\\s*5\\.\\s*The write action",
+        "^##\\s*6\\.\\s*Structured output",
+        "^##\\s*7\\.\\s*Memory",
+        "^##\\s*8\\.\\s*Answer key",
+        "^##\\s*9\\.\\s*Risks"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "at least 3 tools ('- tool:' lines)",
+      "points": 10,
+      "path": "PLAN.md",
+      "pattern": "^\\s*[-*]\\s*tool:",
+      "count": 3
+    },
+    {
+      "type": "count_at_least",
+      "label": "one tool is marked (retrieval)",
+      "points": 5,
+      "path": "PLAN.md",
+      "pattern": "^\\s*[-*]\\s*tool:.*\\(retrieval\\)",
+      "count": 1
+    },
+    {
+      "type": "contains_all",
+      "label": "the write action and who approves it",
+      "points": 10,
+      "path": "PLAN.md",
+      "patterns": [
+        "^\\s*[-*]\\s*write action:",
+        "^\\s*[-*]\\s*write action:.*approv",
+        "\\blimit|\\bcap\\b"
+      ]
+    },
+    {
+      "type": "count_at_least",
+      "label": "at least 8 answer-key tasks ('- T1:' ...)",
+      "points": 15,
+      "path": "PLAN.md",
+      "pattern": "^\\s*[-*]\\s*T\\d+\\s*:",
+      "count": 8
+    },
+    {
+      "type": "count_at_least",
+      "label": "one task is marked (unanswerable)",
+      "points": 5,
+      "path": "PLAN.md",
+      "pattern": "^\\s*[-*]\\s*T\\d+\\s*:.*\\(unanswerable\\)",
+      "count": 1
+    },
+    {
+      "type": "count_at_least",
+      "label": "at least 3 risks, each with a defence",
+      "points": 5,
+      "path": "PLAN.md",
+      "pattern": "^\\s*[-*]\\s*risk:.*defen[cs]e",
+      "count": 3
+    },
+    {
+      "type": "contains_all",
+      "label": "the data is synthetic or public",
+      "points": 5,
+      "path": "PLAN.md",
+      "patterns": [
+        "synthetic|public"
+      ]
     },
     {
       "type": "no_secrets",
       "label": "No API key or .env in your repo (including git history)",
-      "points": 15
+      "points": 10
     }
   ]
 }

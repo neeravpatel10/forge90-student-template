@@ -1,0 +1,110 @@
+{
+  "day": "day47",
+  "folder": "checkpoint2",
+  "pass_mark": 80,
+  "title": "Day 47: Checkpoint 2, your own agent (automatic part: out of 100, worth 25 of the grade)",
+  "checks": [
+    {
+      "type": "file_exists",
+      "label": "PLAN.md is still there",
+      "points": 5,
+      "path": "PLAN.md"
+    },
+    {
+      "type": "min_words",
+      "label": "README.md explains the agent (300+ words)",
+      "points": 8,
+      "path": "README.md",
+      "words": 300
+    },
+    {
+      "type": "sections",
+      "label": "README.md has a Mermaid architecture diagram, a file map and how to run it",
+      "points": 10,
+      "path": "README.md",
+      "patterns": [
+        "```mermaid",
+        "file map",
+        "streamlit run|cli\\.py|python app\\.py"
+      ]
+    },
+    {
+      "type": "file_exists",
+      "label": "requirements.txt exists",
+      "points": 3,
+      "path": "requirements.txt"
+    },
+    {
+      "type": "py_compiles",
+      "label": "agent.py has no syntax errors",
+      "points": 4,
+      "path": "agent.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "agent.py: create_agent, tools, memory, approval, a Pydantic model",
+      "points": 10,
+      "path": "agent.py",
+      "patterns": [
+        "create_agent",
+        "@tool|tools\\s*=",
+        "checkpointer|InMemorySaver|SqliteSaver",
+        "HumanInTheLoopMiddleware|interrupt\\(",
+        "BaseModel"
+      ]
+    },
+    {
+      "type": "py_runs",
+      "label": "tests/test_offline.py runs and its tests pass (no key, no network)",
+      "points": 20,
+      "path": "tests/test_offline.py",
+      "timeout": 180
+    },
+    {
+      "type": "count_at_least",
+      "label": "answer_key.jsonl has at least 8 tasks",
+      "points": 8,
+      "path": "answer_key.jsonl",
+      "pattern": "^\\s*\\{.*\\\"question\\\"",
+      "count": 8
+    },
+    {
+      "type": "contains_all",
+      "label": "one task is unanswerable",
+      "points": 4,
+      "path": "answer_key.jsonl",
+      "patterns": [
+        "\\\"unanswerable\\\"\\s*:\\s*true"
+      ]
+    },
+    {
+      "type": "py_compiles",
+      "label": "eval_answer_key.py has no syntax errors",
+      "points": 3,
+      "path": "eval_answer_key.py"
+    },
+    {
+      "type": "contains_all",
+      "label": "results/key_v0.json: the first measured run",
+      "points": 5,
+      "path": "results/key_v0.json",
+      "patterns": [
+        "\\\"score\\\""
+      ]
+    },
+    {
+      "type": "contains_all",
+      "label": "results/key_final.json: the final measured run",
+      "points": 5,
+      "path": "results/key_final.json",
+      "patterns": [
+        "\\\"score\\\""
+      ]
+    },
+    {
+      "type": "no_secrets",
+      "label": "No API key or .env in your repo (including git history)",
+      "points": 15
+    }
+  ]
+}
